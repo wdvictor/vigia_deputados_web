@@ -1,0 +1,22 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  border-radius: 20px;
+}
+
+.content-container {
+  padding: 100px;
+}
+
+.deputado-card {
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.deputado-body {
+  padding: 10px;
+}
+
+.deputado-img {
+  padding: 10px;
+}
