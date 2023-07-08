@@ -1,4 +1,3 @@
-import React from "react";
 import { DeputadosResponse } from "../../service/deputados-service";
 import { Avatar } from "@mui/material";
 const AllDeputados = ({ deputados }: { deputados: DeputadosResponse }) => {

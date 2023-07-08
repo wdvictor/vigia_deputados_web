@@ -1,38 +1,23 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
-import deputadosService, {
-  DeputadosResponse,
-} from "./service/deputados-service";
-import { AxiosError } from "axios";
 import AllDeputados from "./components/deputados/AllDeputados";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import ToggleMenu from "./components/ToggleMenu";
 import AllDeputadosLoading from "./components/deputados/AllDeputadosLoading";
 import NavBar from "./components/navbar/NavBar";
+import useDeputados from "./hooks/UseDeputados";
+import AllPartidos from "./components/partidos/AllPartidos";
+
+import usePartidos from "./hooks/UsePartidos";
 
 function App() {
-  const [deputados, setDeputados] = useState<DeputadosResponse>();
-  const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(true);
+  const { deputados, isDeputadosLoading, deputadosError } = useDeputados();
+  const { partidos, isPartidosLoading, partidosError } = usePartidos();
   const [selectedMenuOption, setSelectedMenuOption] = useState("Deputados");
 
   const handleMenuOption = (menuOption: string) => {
     setSelectedMenuOption(menuOption);
   };
-
-  useEffect(() => {
-    const { request, cancel } = deputadosService.getAll<DeputadosResponse>();
-
-    setLoading(true);
-    request
-      .then((res) => setDeputados(res.data))
-      .catch((err: AxiosError) => {
-        setError(err.message);
-      })
-      .finally(() => setLoading(false));
-    return () => cancel();
-  }, []);
 
   return (
     <>
@@ -42,16 +27,26 @@ function App() {
         handleMenuOption={(value: string) => handleMenuOption(value)}
         selectedMenuOption={selectedMenuOption}
       />
-      {error && <div className="error-message text-danger">{error}</div>}
-      {isLoading && (
-        <div className="grid-container content-container">
-          {Array.from({ length: 30 }, (_, index) => (
-            <AllDeputadosLoading index={index} />
-          ))}
-        </div>
+      {deputadosError && (
+        <div className="error-message text-danger">{deputadosError}</div>
       )}
+      {partidosError && (
+        <div className="error-message text-danger">{partidosError}</div>
+      )}
+
+      {isDeputadosLoading ||
+        (isPartidosLoading && (
+          <div className="grid-container content-container">
+            {Array.from({ length: 30 }, (_, index) => (
+              <AllDeputadosLoading index={index} />
+            ))}
+          </div>
+        ))}
       {selectedMenuOption == "Deputados" && deputados && (
         <AllDeputados deputados={deputados} />
+      )}
+      {selectedMenuOption == "Partidos" && partidos && (
+        <AllPartidos partidos={partidos} />
       )}
     </>
   );
