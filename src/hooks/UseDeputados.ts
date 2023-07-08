@@ -10,7 +10,7 @@ const useDeputados = () => {
 
 
     useEffect(() => {
-        const { request, cancel } = deputadosService.getAll<DeputadosResponse>();
+        const { request, cancel } = deputadosService.getAll<DeputadosResponse>(['itens=15', 'pagina=1']);
         request
             .then((res) => {
 

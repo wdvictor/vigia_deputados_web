@@ -7,18 +7,14 @@ import NavBar from "./components/navbar/NavBar";
 import AllPartidos from "./components/partidos/AllPartidos";
 
 function App() {
-  const [selectedMenuOption, setSelectedMenuOption] = useState("Deputados");
-
-  const handleMenuOption = (menuOption: string) => {
-    setSelectedMenuOption(menuOption);
-  };
+  const [selectedMenuOption, setSelectedMenuOption] = useState("");
 
   return (
     <>
       <NavBar />
       <div></div>
       <ToggleMenu
-        handleMenuOption={(value: string) => handleMenuOption(value)}
+        handleMenuOption={(value: string) => setSelectedMenuOption(value)}
         selectedMenuOption={selectedMenuOption}
       />
 

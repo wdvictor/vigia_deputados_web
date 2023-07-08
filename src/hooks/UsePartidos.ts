@@ -11,11 +11,7 @@ const usePartidos = () => {
         const { request, cancel } = partidosService.getAll<PartidosResponse>();
         setLoading(true);
         request
-            .then((res) => {
-                console.warn(res.data);
-                setPartidos(res.data);
-            }
-            )
+            .then((res) => setPartidos(res.data))
             .catch((err) => {
                 if (err instanceof CanceledError) return;
                 setError(err.message);

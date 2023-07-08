@@ -39,3 +39,11 @@
   height: 100vh; /* 100% da altura da viewport */
   text-align: center;
 }
+
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
