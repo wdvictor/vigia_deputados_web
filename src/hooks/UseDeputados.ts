@@ -3,14 +3,14 @@ import deputadosService, { DeputadosResponse } from "../service/deputados-servic
 import { CanceledError } from "axios";
 
 
-const useDeputados = () => {
+const useDeputados = (pagina: number) => {
     const [deputadosError, setError] = useState("");
     const [isDeputadosLoading, setLoading] = useState(true);
     const [deputados, setDeputados] = useState<DeputadosResponse>();
 
 
     useEffect(() => {
-        const { request, cancel } = deputadosService.getAll<DeputadosResponse>(['itens=15', 'pagina=1']);
+        const { request, cancel } = deputadosService.getAll<DeputadosResponse>(['itens=15', `pagina=${pagina}`]);
         request
             .then((res) => {
 
@@ -22,7 +22,7 @@ const useDeputados = () => {
             })
             .finally(() => setLoading(false));
         return () => cancel();
-    }, []);
+    }, [pagina]);
 
     return { deputados, isDeputadosLoading, deputadosError };
 }

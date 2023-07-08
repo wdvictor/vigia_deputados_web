@@ -2,11 +2,12 @@
 
 interface Props {
   pagina: number;
+  showNextButton: boolean;
   onNext: () => void;
   onPrevious: () => void;
 }
 
-const Paginacao = ({ pagina, onNext, onPrevious }: Props) => {
+const Paginacao = ({ pagina, onNext, onPrevious, showNextButton }: Props) => {
   return (
     <nav aria-label="Page navigation">
       <ul className="pagination custom-pagination">
@@ -24,11 +25,13 @@ const Paginacao = ({ pagina, onNext, onPrevious }: Props) => {
           </a>
         </li>
 
-        <li className="page-item">
-          <a className="page-link" onClick={onNext} href="#">
-            Próximo
-          </a>
-        </li>
+        {showNextButton && (
+          <li className="page-item">
+            <a className="page-link" onClick={onNext} href="#">
+              Próximo
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );

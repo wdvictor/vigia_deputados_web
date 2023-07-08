@@ -5,8 +5,9 @@ import AllDeputadosLoading from "../deputados/AllDeputadosLoading";
 import Paginacao from "../Paginacao";
 
 const AllPartidos = () => {
-  const { partidos, isPartidosLoading, partidosError } = usePartidos();
   const [pagina, setPagina] = useState(1);
+  const { partidos, isPartidosLoading, partidosError } = usePartidos(pagina);
+
   if (partidosError)
     return <div className="error-message text-danger">{partidosError}</div>;
   if (isPartidosLoading)
@@ -36,6 +37,7 @@ const AllPartidos = () => {
         ))}
       </div>
       <Paginacao
+        showNextButton={partidos?.dados.length !== 0}
         pagina={pagina}
         onNext={() => setPagina(pagina + 1)}
         onPrevious={() => setPagina(pagina - 1)}
