@@ -1,9 +1,11 @@
 //cspell:disable
-import useDeputados from "../../hooks/UseDeputados";
+
 import { Avatar } from "@mui/material";
 import AllDeputadosLoading from "./AllDeputadosLoading";
 import Paginacao from "../Paginacao";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import useDeputados from "../../../hooks/UseDeputados";
 const AllDeputados = () => {
   const [pagina, setPagina] = useState(1);
   const { deputados, isDeputadosLoading, deputadosError } =
@@ -37,9 +39,12 @@ const AllDeputados = () => {
                 <h5 className="card-title">{item.nome}</h5>
                 <p className="card-text fs-6 lh-1">{item.siglaUf}</p>
                 <p className="card-text fw-bold">{item.siglaPartido}</p>
-                <a href="#" className="btn btn-primary">
+                <Link
+                  to={`perfil-deputado/${item.id}`}
+                  className="btn btn-primary"
+                >
                   Visualizar
-                </a>
+                </Link>
               </div>
             </div>
           </div>

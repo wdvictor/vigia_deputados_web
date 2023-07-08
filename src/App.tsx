@@ -1,9 +1,12 @@
 import "./App.css";
-import HomePage from "./HomePage";
-import PerfilDeputado from "./PerfilDeputado";
+import HomePage from "./routes/HomePage";
 
 function App() {
-  return <HomePage />;
+  return (
+    <>
+      <HomePage />
+    </>
+  );
 }
 
 export default App;
