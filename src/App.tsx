@@ -9,12 +9,13 @@ import AllDeputados from "./components/deputados/AllDeputados";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import ToggleMenu from "./components/ToggleMenu";
 import AllDeputadosLoading from "./components/deputados/AllDeputadosLoading";
+import NavBar from "./components/navbar/NavBar";
 
 function App() {
   const [deputados, setDeputados] = useState<DeputadosResponse>();
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(true);
-  const [selectedMenuOption, setSelectedMenuOption] = useState("");
+  const [selectedMenuOption, setSelectedMenuOption] = useState("Deputados");
 
   const handleMenuOption = (menuOption: string) => {
     setSelectedMenuOption(menuOption);
@@ -24,7 +25,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 10000);
+    }, 3000);
     // setLoading(true);
 
     // const { request, cancel } = deputadosService.getAll<DeputadosResponse>();
@@ -41,6 +42,7 @@ function App() {
 
   return (
     <>
+      <NavBar />
       <div>{error && <p>{error}</p>}</div>
       <ToggleMenu
         handleMenuOption={(value: string) => handleMenuOption(value)}
@@ -49,7 +51,7 @@ function App() {
       {isLoading && (
         <div className="grid-container content-container">
           {Array.from({ length: 30 }, (_, index) => (
-            <AllDeputadosLoading key={index} />
+            <AllDeputadosLoading index={index} />
           ))}
         </div>
       )}

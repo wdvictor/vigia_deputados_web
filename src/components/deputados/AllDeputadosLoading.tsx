@@ -1,6 +1,6 @@
-const AllDeputadosLoading = ({ key }: { key: number }) => (
+const AllDeputadosLoading = ({ index }: { index: number }) => (
   <>
-    <div key={key} className="grid-item">
+    <div key={index} className="grid-item">
       <div className="card" aria-hidden="true">
         <div className="card-body">
           <h5 className="card-title placeholder-glow">
