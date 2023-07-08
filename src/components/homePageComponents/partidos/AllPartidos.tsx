@@ -1,8 +1,9 @@
 //cspell:disable
 import { useState } from "react";
-import usePartidos from "../../hooks/UsePartidos";
+
 import AllDeputadosLoading from "../deputados/AllDeputadosLoading";
 import Paginacao from "../Paginacao";
+import usePartidos from "../../../hooks/UsePartidos";
 
 const AllPartidos = () => {
   const [pagina, setPagina] = useState(1);

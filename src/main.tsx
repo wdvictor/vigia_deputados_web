@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./App.css";
-import PerfilDeputado from "./routes/PerfilDeputado";
+import PerfilDeputado, { loader } from "./routes/PerfilDeputado";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +15,8 @@ const router = createBrowserRouter([
   {
     path: "/perfil-deputado/:deputadoID",
     element: <PerfilDeputado />,
+
+    loader: loader,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(
