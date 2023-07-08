@@ -22,32 +22,27 @@ function App() {
   };
 
   useEffect(() => {
+    const { request, cancel } = deputadosService.getAll<DeputadosResponse>();
+
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-    // setLoading(true);
-
-    // const { request, cancel } = deputadosService.getAll<DeputadosResponse>();
-
-    // setLoading(true);
-    // request
-    //   .then((res) => setDeputados(res.data))
-    //   .catch((err: AxiosError) => {
-    //     setError(err.message);
-    //   })
-    //   .finally(() => setLoading(false));
-    // return () => cancel();
+    request
+      .then((res) => setDeputados(res.data))
+      .catch((err: AxiosError) => {
+        setError(err.message);
+      })
+      .finally(() => setLoading(false));
+    return () => cancel();
   }, []);
 
   return (
     <>
       <NavBar />
-      <div>{error && <p>{error}</p>}</div>
+      <div></div>
       <ToggleMenu
         handleMenuOption={(value: string) => handleMenuOption(value)}
         selectedMenuOption={selectedMenuOption}
       />
+      {error && <div className="error-message text-danger">{error}</div>}
       {isLoading && (
         <div className="grid-container content-container">
           {Array.from({ length: 30 }, (_, index) => (
