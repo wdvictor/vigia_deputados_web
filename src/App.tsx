@@ -5,53 +5,54 @@ import deputadosService, {
   DeputadosResponse,
 } from "./service/deputados-service";
 import { AxiosError } from "axios";
-import AllDeputados from "./components/AllDeputados";
+import AllDeputados from "./components/deputados/AllDeputados";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import ToggleMenu from "./components/ToggleMenu";
+import AllDeputadosLoading from "./components/deputados/AllDeputadosLoading";
 
 function App() {
   const [deputados, setDeputados] = useState<DeputadosResponse>();
   const [error, setError] = useState("");
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [selectedMenuOption, setSelectedMenuOption] = useState("");
 
-  const handleMenuOption = (
-    event: React.MouseEvent<HTMLElement>,
-    menuOption: string
-  ) => {
+  const handleMenuOption = (menuOption: string) => {
     setSelectedMenuOption(menuOption);
-    console.log(menuOption);
   };
 
   useEffect(() => {
-    const { request, cancel } = deputadosService.getAll<DeputadosResponse>();
-
     setLoading(true);
-    request
-      .then((res) => setDeputados(res.data))
-      .catch((err: AxiosError) => {
-        setError(err.message);
-      })
-      .finally(() => setLoading(false));
-    return () => cancel();
+    setTimeout(() => {
+      setLoading(false);
+    }, 10000);
+    // setLoading(true);
+
+    // const { request, cancel } = deputadosService.getAll<DeputadosResponse>();
+
+    // setLoading(true);
+    // request
+    //   .then((res) => setDeputados(res.data))
+    //   .catch((err: AxiosError) => {
+    //     setError(err.message);
+    //   })
+    //   .finally(() => setLoading(false));
+    // return () => cancel();
   }, []);
 
   return (
     <>
-      {isLoading && <div className="spinner-border"></div>}
       <div>{error && <p>{error}</p>}</div>
-      <div className="toggle-button-group-container">
-        <ToggleButtonGroup
-          value={selectedMenuOption}
-          exclusive
-          onChange={handleMenuOption}
-          aria-label="opção"
-        >
-          <ToggleButton value="Deputados">Deputados</ToggleButton>
-          <ToggleButton value="Partidos">Partidos</ToggleButton>
-          <ToggleButton value="Proposições">Proposições</ToggleButton>
-          <ToggleButton value="Eventos">Eventos</ToggleButton>
-        </ToggleButtonGroup>
-      </div>
+      <ToggleMenu
+        handleMenuOption={(value: string) => handleMenuOption(value)}
+        selectedMenuOption={selectedMenuOption}
+      />
+      {isLoading && (
+        <div className="grid-container content-container">
+          {Array.from({ length: 30 }, (_, index) => (
+            <AllDeputadosLoading key={index} />
+          ))}
+        </div>
+      )}
       {selectedMenuOption == "Deputados" && deputados && (
         <AllDeputados deputados={deputados} />
       )}
