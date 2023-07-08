@@ -1,13 +1,19 @@
 import React from "react";
 import { DeputadosResponse } from "../service/deputados-service";
-
+import { Avatar } from "@mui/material";
 const AllDeputados = ({ deputados }: { deputados: DeputadosResponse }) => {
   return (
     <div className="grid-container content-container">
       {deputados?.dados.map((item, index) => (
-        <div key={index} className="grid-item deputado-card">
+        <div key={index} className="grid-item">
           <div className="card">
-            <img src={item.urlFoto} className="card-img-top deputado-img" />
+            <div className="deputado-card">
+              <Avatar
+                sx={{ width: 70, height: 70 }}
+                src={item.urlFoto}
+                className="deputado-avatar"
+              />
+            </div>
             <div className="deputado-body">
               <h5 className="card-title">{item.nome}</h5>
               <p className="card-text fs-6 lh-1">{item.email}</p>
