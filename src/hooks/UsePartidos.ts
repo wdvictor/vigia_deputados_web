@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import partidosService, { PartidosResponse } from "../service/partidos-service"
-import { AxiosError } from "axios";
+import { CanceledError } from "axios";
 
 
 const usePartidos = () => {
@@ -16,7 +16,10 @@ const usePartidos = () => {
                 setPartidos(res.data);
             }
             )
-            .catch((err: AxiosError) => setError(err.message))
+            .catch((err) => {
+                if (err instanceof CanceledError) return;
+                setError(err.message);
+            })
             .finally(() => setLoading(false))
 
         return () => cancel();

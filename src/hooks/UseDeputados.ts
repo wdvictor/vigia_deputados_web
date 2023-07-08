@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import deputadosService, { DeputadosResponse } from "../service/deputados-service";
-import { AxiosError } from "axios";
+import { CanceledError } from "axios";
 
 
 const useDeputados = () => {
@@ -12,8 +12,12 @@ const useDeputados = () => {
     useEffect(() => {
         const { request, cancel } = deputadosService.getAll<DeputadosResponse>();
         request
-            .then((res) => setDeputados(res.data))
-            .catch((err: AxiosError) => {
+            .then((res) => {
+
+                setDeputados(res.data);
+            })
+            .catch((err) => {
+                if (err instanceof CanceledError) return;
                 setError(err.message);
             })
             .finally(() => setLoading(false));

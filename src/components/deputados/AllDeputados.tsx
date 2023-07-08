@@ -1,6 +1,21 @@
-import { DeputadosResponse } from "../../service/deputados-service";
+import useDeputados from "../../hooks/UseDeputados";
+
 import { Avatar } from "@mui/material";
-const AllDeputados = ({ deputados }: { deputados: DeputadosResponse }) => {
+import AllDeputadosLoading from "./AllDeputadosLoading";
+const AllDeputados = () => {
+  const { deputados, isDeputadosLoading, deputadosError } = useDeputados();
+
+  if (deputadosError)
+    return <div className="error-message text-danger">{deputadosError}</div>;
+
+  if (isDeputadosLoading)
+    return (
+      <div className="grid-container content-container">
+        {Array.from({ length: 30 }, (_, index) => (
+          <AllDeputadosLoading index={index} />
+        ))}
+      </div>
+    );
   return (
     <div className="grid-container content-container">
       {deputados?.dados.map((item, index) => (
