@@ -1,6 +1,8 @@
+//cspell:disable
 import { useState } from "react";
 import usePartidos from "../../hooks/UsePartidos";
 import AllDeputadosLoading from "../deputados/AllDeputadosLoading";
+import Paginacao from "../Paginacao";
 
 const AllPartidos = () => {
   const { partidos, isPartidosLoading, partidosError } = usePartidos();
@@ -33,39 +35,11 @@ const AllPartidos = () => {
           </div>
         ))}
       </div>
-      <nav aria-label="Page navigation">
-        <ul className="pagination custom-pagination">
-          {pagina > 1 && (
-            <li className="page-item">
-              <a
-                className="page-link"
-                href="#"
-                onClick={() => {
-                  setPagina(pagina - 1);
-                }}
-              >
-                Anterior
-              </a>
-            </li>
-          )}
-
-          <li className="page-item">
-            <a className="page-link" href="#">
-              {pagina}
-            </a>
-          </li>
-
-          <li className="page-item">
-            <a
-              className="page-link"
-              onClick={() => setPagina(pagina + 1)}
-              href="#"
-            >
-              Próximo
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <Paginacao
+        pagina={pagina}
+        onNext={() => setPagina(pagina + 1)}
+        onPrevious={() => setPagina(pagina - 1)}
+      />
     </div>
   );
 };
