@@ -11,7 +11,7 @@ const useDeputadosPerfil = (deputadoID: number) => {
 
 
     useEffect(() => {
-
+        console.warn('requesting perfil deputados');
 
 
         const { request, cancel } = perfilDeputadoService.getPerfil<DeputadoPerfilResponse>(deputadoID);

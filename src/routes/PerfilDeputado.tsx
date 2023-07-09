@@ -1,7 +1,8 @@
 import { Params, useLoaderData } from "react-router-dom";
-import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
-import NavBar from "../components/NavBar";
+
 import "../css/DeputadoPerfil.css";
+import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
+import { Avatar } from "@mui/material";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -18,33 +19,26 @@ const PerfilDeputado = () => {
 
   const { perfil, isLoading, error } = useDeputadosPerfil(deputadoID);
   return (
-    <div>
-      <NavBar />
-      <div className="perfil-deputado">
-        <h2>{perfil?.dados.nomeCivil}</h2>
-        <p>
-          <strong>Nome Civil:</strong> {perfil?.dados.nomeCivil}
-        </p>
-        <p>
-          <strong>CPF:</strong> {perfil?.dados.cpf}
-        </p>
-        <p>
-          <strong>Sexo:</strong> {perfil?.dados.sexo}
-        </p>
-        <p>
-          <strong>Data de Nascimento:</strong>{" "}
-          {perfil && new Date(perfil.dados.dataNascimento).toLocaleDateString()}
-        </p>
-        <p>
-          <strong>UF Nascimento:</strong> {perfil?.dados.ufNascimento}
-        </p>
-        <p>
-          <strong>Município de Nascimento:</strong>{" "}
-          {perfil?.dados.municipioNascimento}
-        </p>
-        <p>
-          <strong>Escolaridade:</strong> {perfil?.dados.escolaridade}
-        </p>
+    <div className="perfil">
+      <div className="perfil-sidebar">
+        <Avatar
+          className="mb-3"
+          src={perfil?.dados.ultimoStatus.urlFoto}
+          sx={{ width: 100, height: 100 }}
+        />
+        <p className="fw-bold">{perfil?.dados.ultimoStatus.nomeEleitoral}</p>
+        <p className="fw-bold">{perfil?.dados.nomeCivil.toLowerCase()}</p>
+        <p className="fw-bold">{perfil?.dados.ultimoStatus.email}</p>
+      </div>
+      <div className="perfil-content">
+        <div className="perfil-content-row">
+          <div style={{ flex: 2 }}>Div 1</div>
+          <div>Div 2</div>
+        </div>
+        <div className="perfil-content-row">
+          <div>Div 3</div>
+          <div>Div 4</div>
+        </div>
       </div>
     </div>
   );

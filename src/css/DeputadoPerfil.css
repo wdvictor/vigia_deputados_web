@@ -1,20 +1,42 @@
-perfil-deputado {
-  width: 60%;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: #f5f5f5;
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+.perfil {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
 }
-
-.perfil-deputado h2 {
-  margin-bottom: 1rem;
+.perfil-sidebar {
+  margin-top: 2vh;
+  border-radius: 0px 20px 20px 0px;
+  width: 20vw;
+  height: 100vh;
+  background-color: #049dd9;
+  padding: 2%;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
   text-align: center;
-  text-transform: uppercase;
-  color: #333;
 }
 
-.perfil-deputado p {
-  margin-bottom: 0.5rem;
-  color: #666;
+.perfil-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.perfil-content-row {
+  display: flex;
+  flex: 1;
+}
+
+.perfil-content-row div {
+  margin: 2.5vh;
+  background-color: whitesmoke;
+  display: flex;
+  flex: 1;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
