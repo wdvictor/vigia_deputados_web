@@ -26,9 +26,13 @@ const PerfilDeputado = () => {
           src={perfil?.dados.ultimoStatus.urlFoto}
           sx={{ width: 100, height: 100 }}
         />
-        <p className="fw-bold">{perfil?.dados.ultimoStatus.nomeEleitoral}</p>
-        <p className="fw-bold">{perfil?.dados.nomeCivil.toLowerCase()}</p>
-        <p className="fw-bold">{perfil?.dados.ultimoStatus.email}</p>
+        <p className="fw-bold fs-5" style={{ color: "white" }}>
+          {perfil?.dados.ultimoStatus.nomeEleitoral}
+        </p>
+        <p className="fw-normal fs-6">
+          {perfil?.dados.nomeCivil.toLowerCase()}
+        </p>
+        <p className="fw-normal">{perfil?.dados.ultimoStatus.email}</p>
       </div>
       <div className="perfil-content">
         <div className="perfil-content-row">
