@@ -26,7 +26,7 @@ const PerfilDeputado = () => {
           src={perfil?.dados.ultimoStatus.urlFoto}
           sx={{ width: 100, height: 100 }}
         />
-        <p className="fw-bold fs-5" style={{ color: "white" }}>
+        <p className="fw-bold fs-5">
           {perfil?.dados.ultimoStatus.nomeEleitoral}
         </p>
         <p className="fw-normal fs-6">
@@ -36,8 +36,19 @@ const PerfilDeputado = () => {
       </div>
       <div className="perfil-content">
         <div className="perfil-content-row">
-          <div style={{ flex: 2 }}>Div 1</div>
-          <div>Div 2</div>
+          <div
+            style={{
+              backgroundColor: "transparent",
+              boxShadow: "0px 0px 0px 0px transparent",
+            }}
+          ></div>
+          <div
+            style={{
+              flex: 1.5,
+            }}
+          >
+            Div 2
+          </div>
         </div>
         <div className="perfil-content-row">
           <div>Div 3</div>
