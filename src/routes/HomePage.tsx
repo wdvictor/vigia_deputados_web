@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import NavBar from "../components/navbar/NavBar";
 import ToggleMenu from "../components/homePageComponents/ToggleMenu";
 import AllDeputados from "../components/homePageComponents/deputados/AllDeputados";
 import AllPartidos from "../components/homePageComponents/partidos/AllPartidos";
+import NavBar from "../components/NavBar";
 
 const HomePage = () => {
   const [selectedMenuOption, setSelectedMenuOption] = useState("Deputados");
