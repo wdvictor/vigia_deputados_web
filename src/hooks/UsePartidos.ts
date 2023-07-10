@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import partidosService, { PartidosResponse } from "../service/partidos-service"
+import partidosService, { PartidosResponse } from "../service/camara-service/partidos-service"
 import { CanceledError } from "axios";
 
 

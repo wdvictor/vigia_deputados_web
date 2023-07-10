@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { CanceledError } from "axios";
-import perfilDeputadoService, { DeputadoPerfilResponse } from "../service/perfil-deputado-service";
+import perfilDeputadoService, { DeputadoPerfilResponse } from "../service/camara-service/perfil-deputado-service";
 
 
 const useDeputadosPerfil = (deputadoID: number) => {

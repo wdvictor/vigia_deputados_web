@@ -1,0 +1,34 @@
+.dados-container {
+  flex-direction: column;
+}
+
+.condicao-eleitoral {
+  height: 30%;
+
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+}
+
+.condicao-eleitoral div {
+  height: 100%;
+
+  margin: 0%;
+}
+
+.sigla-text {
+  width: 100%;
+  height: 100%;
+  font-size: 100px;
+  font-weight: bolder;
+}
+
+.text-condicao-atual {
+  width: 100%;
+  height: 100%;
+  flex: 3;
+  justify-content: start;
+  justify-items: start;
+  justify-self: start;
+  align-content: start;
+}

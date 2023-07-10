@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import ToggleMenu from "../components/homePageComponents/ToggleMenu";
-import AllDeputados from "../components/homePageComponents/deputados/AllDeputados";
-import AllPartidos from "../components/homePageComponents/partidos/AllPartidos";
+import ToggleMenu from "../components/home-page-components/ToggleMenu";
+import AllDeputados from "../components/home-page-components/deputados/AllDeputados";
+import AllPartidos from "../components/home-page-components/partidos/AllPartidos";
 import NavBar from "../components/NavBar";
 
 const HomePage = () => {

@@ -1,4 +1,4 @@
-import create from "./http-service";
+import create from "./http-camara-service";
 export interface DeputadosResponse {
     dados: Dado[];
     links: Link[];
