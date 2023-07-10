@@ -4,14 +4,19 @@ const DadosEleitorais = ({ perfil }: { perfil: DeputadoPerfilResponse }) => {
   return (
     <div className="dados-container">
       <div className="condicao-eleitoral">
-        <div>
-          <text className="sigla-text">
-            {perfil?.dados.ultimoStatus.siglaPartido}
-          </text>
-        </div>
+        <text className="sigla-text">
+          {perfil?.dados.ultimoStatus.siglaPartido}
+        </text>
+        <div
+          style={{
+            display: "inline",
 
-        <div className="text-condicao-atual">
-          <text>{perfil?.dados.ultimoStatus.condicaoEleitoral}</text>
+            margin: "0px",
+          }}
+        >
+          <div className="text-condicao-atual" style={{ flex: 2 }}>
+            <text>{perfil?.dados.ultimoStatus.condicaoEleitoral}</text>
+          </div>
         </div>
       </div>
     </div>

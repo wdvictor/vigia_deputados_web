@@ -4,9 +4,7 @@
   display: flex;
 }
 .perfil-sidebar {
-  margin-top: 2vh;
-  border-radius: 0px 20px 20px 0px;
-  width: 20vw;
+  width: 25vw;
   height: 100vh;
   background-color: #18593b;
   padding: 2%;
@@ -35,13 +33,12 @@
 
 .perfil-content-row div {
   margin: 2.5vh;
-  border: 1px solid black;
+
   display: flex;
   flex-direction: row;
   flex: 1;
   border-radius: 10px;
-  justify-content: center;
-  align-items: center;
+
   /* box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15); */
 }
 
