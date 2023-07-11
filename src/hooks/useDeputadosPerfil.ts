@@ -1,34 +1,62 @@
-import { useEffect, useState } from "react";
 
-import { CanceledError } from "axios";
-import perfilDeputadoService, { DeputadoPerfilResponse } from "../service/camara-service/perfil-deputado-service";
+import useData from "./useData";
 
 
-const useDeputadosPerfil = (deputadoID: number) => {
-    const [error, setError] = useState("");
-    const [isLoading, setLoading] = useState(true);
-    const [perfil, setPerfil] = useState<DeputadoPerfilResponse>();
 
-
-    useEffect(() => {
-        console.warn('requesting perfil deputados');
-
-
-        const { request, cancel } = perfilDeputadoService.getPerfil<DeputadoPerfilResponse>(deputadoID);
-        request
-            .then((res) => {
-
-                setPerfil(res.data);
-            })
-            .catch((err) => {
-                if (err instanceof CanceledError) return;
-                setError(err.message);
-            })
-            .finally(() => setLoading(false));
-        return () => cancel();
-    }, []);
-
-    return { perfil, isLoading, error };
+export interface DeputadoPerfilResponse {
+    dados: Dados;
+    links: Link[];
 }
+
+export interface Dados {
+    id: number;
+    uri: string;
+    nomeCivil: string;
+    ultimoStatus: UltimoStatus;
+    cpf: string;
+    sexo: string;
+    urlWebsite: null;
+    redeSocial: any[];
+    dataNascimento: Date;
+    dataFalecimento: null;
+    ufNascimento: string;
+    municipioNascimento: string;
+    escolaridade: string;
+}
+
+export interface UltimoStatus {
+    id: number;
+    uri: string;
+    nome: string;
+    siglaPartido: string;
+    uriPartido: string;
+    siglaUf: string;
+    idLegislatura: number;
+    urlFoto: string;
+    email: string;
+    data: string;
+    nomeEleitoral: string;
+    gabinete: Gabinete;
+    situacao: string;
+    condicaoEleitoral: string;
+    descricaoStatus: null;
+}
+
+export interface Gabinete {
+    nome: string;
+    predio: string;
+    sala: string;
+    andar: string;
+    telefone: string;
+    email: string;
+}
+
+export interface Link {
+    rel: string;
+    href: string;
+}
+
+
+const useDeputadosPerfil = (deputadoID: number, params?: string[]) => useData<DeputadoPerfilResponse>(`/deputados/${deputadoID}`, params)
 
 export default useDeputadosPerfil;

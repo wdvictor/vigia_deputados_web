@@ -3,18 +3,16 @@
 import { Avatar } from "@mui/material";
 import AllDeputadosLoading from "./AllDeputadosLoading";
 import Paginacao from "../Paginacao";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useDeputados from "../../../hooks/UseDeputados";
 const AllDeputados = () => {
   const [pagina, setPagina] = useState(1);
-  const { deputados, isDeputadosLoading, deputadosError } =
-    useDeputados(pagina);
+  const { data, isLoading, error } = useDeputados(pagina);
 
-  if (deputadosError)
-    return <div className="error-message text-danger">{deputadosError}</div>;
+  if (error) return <div className="error-message text-danger">{error}</div>;
 
-  if (isDeputadosLoading)
+  if (isLoading)
     return (
       <div className="grid-container content-container">
         {Array.from({ length: 30 }, (_, index) => (
@@ -25,7 +23,7 @@ const AllDeputados = () => {
   return (
     <div>
       <div className="grid-container content-container">
-        {deputados?.dados.map((item, index) => (
+        {data?.dados.map((item, index) => (
           <div key={index} className="grid-item">
             <div className="card">
               <div className="deputado-card">
@@ -52,7 +50,7 @@ const AllDeputados = () => {
       </div>
       <Paginacao
         onPrevious={() => setPagina(pagina - 1)}
-        showNextButton={deputados?.dados.length !== 0}
+        showNextButton={data?.dados.length !== 0}
         pagina={pagina}
         onNext={() => setPagina(pagina + 1)}
       />

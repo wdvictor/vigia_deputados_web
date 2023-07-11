@@ -7,11 +7,10 @@ import usePartidos from "../../../hooks/UsePartidos";
 
 const AllPartidos = () => {
   const [pagina, setPagina] = useState(1);
-  const { partidos, isPartidosLoading, partidosError } = usePartidos(pagina);
+  const { data, isLoading, error } = usePartidos(pagina);
 
-  if (partidosError)
-    return <div className="error-message text-danger">{partidosError}</div>;
-  if (isPartidosLoading)
+  if (error) return <div className="error-message text-danger">{error}</div>;
+  if (isLoading)
     return (
       <div className="grid-container content-container">
         {Array.from({ length: 30 }, (_, index) => (
@@ -22,7 +21,7 @@ const AllPartidos = () => {
   return (
     <div>
       <div className="grid-container content-container">
-        {partidos?.dados.map((partido, index) => (
+        {data?.dados.map((partido, index) => (
           <div key={index} className="grid-item">
             <div className="card">
               <div className="deputado-body">
@@ -38,7 +37,7 @@ const AllPartidos = () => {
         ))}
       </div>
       <Paginacao
-        showNextButton={partidos?.dados.length !== 0}
+        showNextButton={data?.dados.length !== 0}
         pagina={pagina}
         onNext={() => setPagina(pagina + 1)}
         onPrevious={() => setPagina(pagina - 1)}
