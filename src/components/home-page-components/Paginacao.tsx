@@ -9,7 +9,7 @@ interface Props {
 
 const Paginacao = ({ pagina, onNext, onPrevious, showNextButton }: Props) => {
   return (
-    <nav aria-label="Page navigation">
+    <nav aria-label="page navigation" style={{ paddingBottom: "50px" }}>
       <ul
         className="pagination"
         style={{ justifyContent: "center", margin: "10px" }}

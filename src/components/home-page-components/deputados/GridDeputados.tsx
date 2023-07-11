@@ -26,13 +26,7 @@ const GridDeputados = () => {
 
   return (
     <>
-      <Grid
-        templateColumns="repeat(5, 1fr)"
-        w="100%"
-        height="80vh"
-        gap="1"
-        padding="3%"
-      >
+      <Grid templateColumns="repeat(5, 1fr)" gap="3%" padding="3%">
         {isLoading &&
           skeletons.map((s) => (
             <DeputadoContainer key={s}>
@@ -40,11 +34,12 @@ const GridDeputados = () => {
             </DeputadoContainer>
           ))}
         {data?.dados.map((deputado) => (
-          <DeputadoContainer>
+          <DeputadoContainer key={deputado.id}>
             <DeputadoCard deputado={deputado} />
           </DeputadoContainer>
         ))}
       </Grid>
+
       <Paginacao
         onPrevious={() => setPagina(pagina - 1)}
         showNextButton={data?.dados.length !== 0}

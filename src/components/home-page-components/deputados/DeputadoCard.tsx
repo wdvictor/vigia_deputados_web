@@ -14,8 +14,9 @@ const DeputadoCard = ({ deputado }: Props) => {
       flexDirection="column"
       alignItems="center"
       justifyContent="center"
+      boxShadow="0px 5px 15px grey"
     >
-      <Image src={deputado.urlFoto} boxSize="150px" margin="10px" />
+      <Image src={deputado.urlFoto} boxSize="150px" margin="15px" />
       <CardBody>
         <Heading fontSize="2xl">{deputado.nome}</Heading>
         <Text>{deputado.nome}</Text>

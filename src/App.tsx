@@ -11,7 +11,7 @@ function App() {
     <>
       <VStack backgroundColor="white" h="100vh">
         <NavBar></NavBar>
-        <Box w="100%">
+        <Box w="100vw" h="100vh">
           {selectedMenuOption == "Deputados" && <GridDeputados />}
         </Box>
       </VStack>

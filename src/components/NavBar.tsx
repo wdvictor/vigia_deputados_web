@@ -1,12 +1,12 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
-import { primaryBlue } from "../camara-theme";
+import { primaryBlue, primaryGreen } from "../camara-theme";
 
 const NavBar = () => {
   return (
     <HStack
       justifyContent={"start"}
       width={"100vw"}
-      backgroundColor={primaryBlue}
+      backgroundColor={primaryGreen}
     >
       <Image
         margin="10px"
