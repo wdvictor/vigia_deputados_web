@@ -1,8 +1,7 @@
 import { Params, useLoaderData } from "react-router-dom";
 
-import "../css/deputado-perfil/DeputadoPerfil.css";
 import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
-import { Avatar } from "@mui/material";
+
 import SideBar from "../components/deputado-perfil-components/SideBar";
 import DadosEleitorais from "../components/deputado-perfil-components/DadosEleitorais";
 
@@ -16,17 +15,17 @@ interface LoaderData {
 }
 
 const PerfilDeputado = () => {
-  const data = useLoaderData();
-  const deputadoID = (data as LoaderData).deputadoID;
+  const paramsData = useLoaderData();
+  const deputadoID = (paramsData as LoaderData).deputadoID;
 
-  const { perfil } = useDeputadosPerfil(deputadoID);
+  const { data, isLoading, error } = useDeputadosPerfil(deputadoID);
 
   return (
     <div className="perfil">
-      <SideBar perfil={perfil!} />
+      <SideBar perfil={data!} />
       <div className="perfil-content">
         <div className="perfil-content-row">
-          <DadosEleitorais perfil={perfil!} />
+          <DadosEleitorais perfil={data!} />
           <div
             style={{
               flex: 1.5,

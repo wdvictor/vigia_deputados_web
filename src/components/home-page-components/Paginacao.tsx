@@ -10,7 +10,10 @@ interface Props {
 const Paginacao = ({ pagina, onNext, onPrevious, showNextButton }: Props) => {
   return (
     <nav aria-label="Page navigation">
-      <ul className="pagination custom-pagination">
+      <ul
+        className="pagination"
+        style={{ justifyContent: "center", margin: "10px" }}
+      >
         {pagina > 1 && (
           <li className="page-item">
             <a className="page-link" href="#" onClick={onPrevious}>

@@ -57,6 +57,6 @@ export interface Link {
 }
 
 
-const useDeputadosPerfil = (deputadoID: number, params?: string[]) => useData<DeputadoPerfilResponse>(`/deputados/${deputadoID}`, params)
+const useDeputadosPerfil = (deputadoID: number, params?: string[]) => useData<DeputadoPerfilResponse>(`/deputados/${deputadoID}`, null, params)
 
 export default useDeputadosPerfil;

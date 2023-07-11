@@ -1,5 +1,5 @@
-import { DeputadoPerfilResponse } from "../../service/camara-service/perfil-deputado-service";
-import "../../css/deputado-perfil/DadosEleitorais.css";
+import { DeputadoPerfilResponse } from "../../hooks/useDeputadosPerfil";
+
 const DadosEleitorais = ({ perfil }: { perfil: DeputadoPerfilResponse }) => {
   return (
     <div className="dados-container">

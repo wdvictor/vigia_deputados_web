@@ -1,7 +1,7 @@
 //cspell:disable
 import { useState } from "react";
 
-import AllDeputadosLoading from "../deputados/AllDeputadosLoading";
+import AllDeputadosLoading from "../deputados/DeputadosSkeleton";
 import Paginacao from "../Paginacao";
 import usePartidos from "../../../hooks/UsePartidos";
 

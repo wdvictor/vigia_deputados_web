@@ -1,5 +1,4 @@
-import ToggleButton from "@mui/material/ToggleButton/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup/ToggleButtonGroup";
+import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 
 interface Props {
   selectedMenuOption: string;

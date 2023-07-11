@@ -10,7 +10,7 @@ const useData = <T>(endpoint: string, effectHookData: any, params?: string[],) =
     const [isLoading, setLoading] = useState(true);
 
     useEffect(() => {
-        console.warn('exceturing useData')
+
         const controller = new AbortController();
         setLoading(true);
 
@@ -20,19 +20,19 @@ const useData = <T>(endpoint: string, effectHookData: any, params?: string[],) =
                 urlParams += `&${param}`;
             }
         }
+        console.warn('Requesting ' + endpoint, params);
+        // apiClient.get<T>(endpoint + urlParams)
+        //     .then((res) => {
+        //         setData(res.data);
+        //         setLoading(false);
+        //     })
+        //     .catch((err) => {
+        //         if (err instanceof CanceledError) return;
 
-        apiClient.get<T>(endpoint + urlParams)
-            .then((res) => {
-                setData(res.data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                if (err instanceof CanceledError) return;
-
-                setError(err.message);
-                setLoading(false);
-            })
-            .finally(() => setLoading(false));
+        //         setError(err.message);
+        //         setLoading(false);
+        //     })
+        //     .finally(() => setLoading(false));
         return () => controller.abort();
     }, [effectHookData]);
 
