@@ -21,18 +21,18 @@ const useData = <T>(endpoint: string, effectHookData: any, params?: string[],) =
             }
         }
         console.warn('Requesting ' + endpoint, params);
-        // apiClient.get<T>(endpoint + urlParams)
-        //     .then((res) => {
-        //         setData(res.data);
-        //         setLoading(false);
-        //     })
-        //     .catch((err) => {
-        //         if (err instanceof CanceledError) return;
+        apiClient.get<T>(endpoint + urlParams)
+            .then((res) => {
+                setData(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                if (err instanceof CanceledError) return;
 
-        //         setError(err.message);
-        //         setLoading(false);
-        //     })
-        //     .finally(() => setLoading(false));
+                setError(err.message);
+                setLoading(false);
+            })
+            .finally(() => setLoading(false));
         return () => controller.abort();
     }, [effectHookData]);
 

@@ -7,7 +7,7 @@ interface Props {
 
 const DeputadoContainer = ({ children }: Props) => {
   return (
-    <Box width="300px" borderRadius={10} overflow={"hidden"}>
+    <Box width="300px" borderRadius={10} height="400px" overflow={"hidden"}>
       {children}
     </Box>
   );

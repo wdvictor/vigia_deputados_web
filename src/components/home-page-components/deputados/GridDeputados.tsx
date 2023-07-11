@@ -5,10 +5,18 @@ import Paginacao from "../Paginacao";
 import { useState } from "react";
 
 import useDeputados from "../../../hooks/UseDeputados";
-import { Container, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Grid,
+  HStack,
+  SimpleGrid,
+  VStack,
+} from "@chakra-ui/react";
 
 import DeputadosSkeleton from "./DeputadosSkeleton";
 import DeputadoContainer from "./DeputadoContainer";
+import DeputadoCard from "./DeputadoCard";
 
 const GridDeputados = () => {
   const [pagina, setPagina] = useState(1);
@@ -18,12 +26,12 @@ const GridDeputados = () => {
 
   return (
     <>
-      <SimpleGrid
+      <Grid
+        templateColumns="repeat(5, 1fr)"
         w="100%"
         height="80vh"
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        padding={"5%"}
-        spacing={5}
+        gap="1"
+        padding="3%"
       >
         {isLoading &&
           skeletons.map((s) => (
@@ -31,7 +39,12 @@ const GridDeputados = () => {
               <DeputadosSkeleton />
             </DeputadoContainer>
           ))}
-      </SimpleGrid>
+        {data?.dados.map((deputado) => (
+          <DeputadoContainer>
+            <DeputadoCard deputado={deputado} />
+          </DeputadoContainer>
+        ))}
+      </Grid>
       <Paginacao
         onPrevious={() => setPagina(pagina - 1)}
         showNextButton={data?.dados.length !== 0}
