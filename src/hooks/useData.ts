@@ -33,6 +33,9 @@ const useData = <T>(endpoint: string, effectHookData: any, params?: string[],) =
                 setLoading(false);
             })
             .finally(() => setLoading(false));
+
+
+
         return () => controller.abort();
     }, [effectHookData]);
 

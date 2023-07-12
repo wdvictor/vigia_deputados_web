@@ -1,16 +1,16 @@
 //cspell:disable
 import { useState } from "react";
 
-import AllDeputadosLoading from "../deputados/DeputadosSkeleton";
 import Paginacao from "../Paginacao";
 import usePartidos from "../../../hooks/UsePartidos";
-import { SimpleGrid, VStack } from "@chakra-ui/react";
+import { Box, SimpleGrid, Spinner, VStack } from "@chakra-ui/react";
 import PartidoCard from "./PartidoCard";
+import PartidosSkeleton from "./PartidosSkeleton";
 
 const PartidosTab = () => {
   const [pagina, setPagina] = useState(1);
   const { data, isLoading, error } = usePartidos(pagina);
-
+  const skeleton = Array.from({ length: 10 }, (_, index) => index);
   if (error) return <div className="error-message text-danger">{error}</div>;
 
   return (
@@ -20,8 +20,9 @@ const PartidosTab = () => {
         columns={{ sm: 1, md: 3, lg: 3, xl: 5 }}
         spacing="10"
       >
+        {isLoading && skeleton.map((s) => <PartidosSkeleton key={s} />)}
         {data?.dados.map((partido) => (
-          <PartidoCard partido={partido} />
+          <PartidoCard partido={partido} key={partido.id} />
         ))}
       </SimpleGrid>
       <Paginacao
