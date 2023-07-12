@@ -16,7 +16,7 @@ export interface Dados {
     cpf: string;
     sexo: string;
     urlWebsite: null;
-    redeSocial: any[];
+    redeSocial: string[];
     dataNascimento: Date;
     dataFalecimento: null;
     ufNascimento: string;

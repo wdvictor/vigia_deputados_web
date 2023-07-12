@@ -4,7 +4,7 @@ import Paginacao from "../Paginacao";
 import { useState } from "react";
 
 import useDeputados from "../../../hooks/UseDeputados";
-import { Container, SimpleGrid, VStack } from "@chakra-ui/react";
+import { SimpleGrid, VStack } from "@chakra-ui/react";
 
 import DeputadosSkeleton from "./DeputadosSkeleton";
 import DeputadoContainer from "./DeputadoContainer";

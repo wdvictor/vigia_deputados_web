@@ -6,4 +6,4 @@ export const thirdColor: string = '#364027';
 export const mineralGreen: string = '#4AB0D9';
 export const spanishGreen: string = '#C2D9BF';
 export const woodrush: string = '#352B10';
-
+export const bitter: string = '#8D9179';

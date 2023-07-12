@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import Paginacao from "../Paginacao";
 import usePartidos from "../../../hooks/UsePartidos";
-import { Box, SimpleGrid, Spinner, VStack } from "@chakra-ui/react";
+import { SimpleGrid, VStack } from "@chakra-ui/react";
 import PartidoCard from "./PartidoCard";
 import PartidosSkeleton from "./PartidosSkeleton";
 
