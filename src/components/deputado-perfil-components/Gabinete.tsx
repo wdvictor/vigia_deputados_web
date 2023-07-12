@@ -28,7 +28,8 @@ const GabineteContainer = ({
   };
   return (
     <Box
-      h="30vh"
+      h="350px"
+      w="350px"
       border={`2px solid ${secondaryColor}`}
       borderRadius="15px"
       textColor="black"

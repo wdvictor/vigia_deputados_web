@@ -8,8 +8,8 @@ interface Props {
 const GabineteInfoRow = ({ title, data }: Props) => {
   return (
     <Flex direction="row" w="100%">
-      <Box flex={1}>
-        <Center color="gray">{title}</Center>
+      <Box flex={1} color="gray">
+        {title}
       </Box>
       <Box flex={1}>{data ? data : "-"}</Box>
     </Flex>

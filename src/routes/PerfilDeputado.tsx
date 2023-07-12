@@ -19,6 +19,7 @@ import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
 import NavBar from "../components/NavBar";
 import SideBar from "../components/deputado-perfil-components/SideBar";
 import GabineteContainer from "../components/deputado-perfil-components/Gabinete";
+import DadosPessoaisContainer from "../components/deputado-perfil-components/DadosPessoaisContainer";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -83,11 +84,10 @@ const PerfilDeputado = () => {
       )}
       <Box w="100%" h="100%">
         {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
-        <Flex mt="5%" ml="2%">
+        <Flex mt="5%" ml="2%" mr="2%" direction="column" h="100%">
+          <DadosPessoaisContainer data={data} />
+          <Box h="2%"></Box>
           <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
-
-          <Spacer />
-          <Box w="180px" h="10" bg="red.500" />
         </Flex>
       </Box>
     </HStack>
