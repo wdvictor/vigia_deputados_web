@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   Box,
   Tab,
@@ -7,18 +5,11 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Text,
   VStack,
 } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 
-import {
-  primaryColor,
-  secondaryColor,
-  spanishGreen,
-  thirdColor,
-  woodrush,
-} from "./custom-theme";
+import { spanishGreen } from "./custom-theme";
 import DeputadosTab from "./components/home-page-components/deputados/DeputadoTab";
 import PartidosTab from "./components/home-page-components/partidos/PartidosTab";
 

@@ -1,18 +1,10 @@
 //cspell:disable
 
-import AllDeputadosLoading from "./DeputadosSkeleton";
 import Paginacao from "../Paginacao";
 import { useState } from "react";
 
 import useDeputados from "../../../hooks/UseDeputados";
-import {
-  Box,
-  Container,
-  Grid,
-  HStack,
-  SimpleGrid,
-  VStack,
-} from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 
 import DeputadosSkeleton from "./DeputadosSkeleton";
 import DeputadoContainer from "./DeputadoContainer";
