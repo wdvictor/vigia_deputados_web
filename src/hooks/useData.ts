@@ -20,7 +20,7 @@ const useData = <T>(endpoint: string, effectHookData: any, params?: string[],) =
                 urlParams += `&${param}`;
             }
         }
-        console.warn('Requesting ' + endpoint, params);
+
         apiClient.get<T>(endpoint + urlParams)
             .then((res) => {
                 setData(res.data);

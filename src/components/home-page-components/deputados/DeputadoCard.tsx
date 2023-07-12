@@ -51,9 +51,7 @@ const DeputadoCard = ({ deputado }: Props) => {
         borderRadius="0px 0px 20px 20px"
       >
         <Text textAlign="center" padding="10px" color={spanishGreen}>
-          <VisualizarLink>
-            <Link to={`/perfil-deputado/${deputado.id}`}>Visualiar</Link>
-          </VisualizarLink>
+          <Link to={`/perfil-deputado/${deputado.id}`}>Visualiar</Link>
         </Text>
       </Container>
     </Box>

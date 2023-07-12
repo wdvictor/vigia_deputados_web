@@ -18,7 +18,7 @@ import DeputadosSkeleton from "./DeputadosSkeleton";
 import DeputadoContainer from "./DeputadoContainer";
 import DeputadoCard from "./DeputadoCard";
 
-const GridDeputados = () => {
+const DeputadosTab = () => {
   const [pagina, setPagina] = useState(1);
   const { data, isLoading, error } = useDeputados(pagina);
   const skeletons = [1, 2, 3, 4, 5, 6];
@@ -27,9 +27,9 @@ const GridDeputados = () => {
   return (
     <>
       <SimpleGrid
-        padding="5%"
-        margin="10px"
+        padding="1%"
         columns={{ sm: 1, md: 2, lg: 2, xl: 3 }}
+        spacing="10"
       >
         {isLoading &&
           skeletons.map((s) => (
@@ -54,4 +54,4 @@ const GridDeputados = () => {
   );
 };
 
-export default GridDeputados;
+export default DeputadosTab;

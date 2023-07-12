@@ -5,7 +5,7 @@ import AllDeputadosLoading from "../deputados/DeputadosSkeleton";
 import Paginacao from "../Paginacao";
 import usePartidos from "../../../hooks/UsePartidos";
 
-const AllPartidos = () => {
+const PartidosTab = () => {
   const [pagina, setPagina] = useState(1);
   const { data, isLoading, error } = usePartidos(pagina);
 
@@ -13,22 +13,6 @@ const AllPartidos = () => {
 
   return (
     <div>
-      <div className="grid-container content-container">
-        {data?.dados.map((partido, index) => (
-          <div key={index} className="grid-item">
-            <div className="card">
-              <div className="deputado-body">
-                <h5 className="card-title">{partido.sigla}</h5>
-                <p className="card-text fs-6 lh-1">{partido.nome}</p>
-
-                <a href={partido.uri} className="btn btn-primary">
-                  Visualizar
-                </a>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
       <Paginacao
         showNextButton={data?.dados.length !== 0}
         pagina={pagina}
@@ -39,4 +23,4 @@ const AllPartidos = () => {
   );
 };
 
-export default AllPartidos;
+export default PartidosTab;
