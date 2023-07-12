@@ -9,10 +9,15 @@ const useData = <T>(endpoint: string, effectHookData: any, params?: string[],) =
     const [error, setError] = useState("");
     const [isLoading, setLoading] = useState(true);
 
+
+
+
     useEffect(() => {
 
         const controller = new AbortController();
         setLoading(true);
+
+
 
         let urlParams = '?formato=json'
         if (params) {

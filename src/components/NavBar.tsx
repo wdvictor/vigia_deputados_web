@@ -1,11 +1,4 @@
-import {
-  Button,
-  HStack,
-  Icon,
-  IconButton,
-  Image,
-  Text,
-} from "@chakra-ui/react";
+import { HStack, IconButton, Image, Text } from "@chakra-ui/react";
 import { primaryColor, spanishGreen } from "../custom-theme";
 import { AiOutlineMenu } from "react-icons/ai";
 

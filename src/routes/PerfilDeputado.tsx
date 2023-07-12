@@ -3,6 +3,7 @@ import {
   Badge,
   Box,
   Button,
+  Center,
   Drawer,
   DrawerBody,
   DrawerContent,
@@ -11,6 +12,7 @@ import {
   Icon,
   Link,
   Spacer,
+  Spinner,
   Text,
   VStack,
   useBreakpointValue,
@@ -92,8 +94,10 @@ const PerfilDeputado = () => {
   );
 
   return (
-    <VStack display="flex" alignItems="start" h="100vh" w="100vw">
-      {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
+    <HStack display="flex" alignItems="start" h="100vh" w="100vw">
+      {!isLargeScreen && isLoading && (
+        <NavBar showDrawerIcon={true} onClick={onOpen} />
+      )}
 
       {isLargeScreen ? (
         <SidebarContent />
@@ -109,8 +113,18 @@ const PerfilDeputado = () => {
         </Drawer>
       )}
 
-      {/* Aqui vai o restante do conteúdo da sua página de perfil */}
-    </VStack>
+      {isLoading && (
+        <Box
+          display="flex"
+          h="100%"
+          w="100%"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Spinner size="xl" />
+        </Box>
+      )}
+    </HStack>
   );
 };
 
