@@ -1,7 +1,5 @@
 import { Flex, Center, Box } from "@chakra-ui/react";
 
-import React from "react";
-
 interface Props {
   title: string;
   data: string | undefined;

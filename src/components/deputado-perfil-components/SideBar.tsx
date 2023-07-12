@@ -49,7 +49,7 @@ const SideBar = ({
       h="100%"
       w={isLargeScreen ? "15%" : "100%"}
     >
-      <Avatar mt="50px" boxSize="100px" src={urlFoto} />
+      <Avatar mt="55px" boxSize="100px" src={urlFoto} />
       <Text color="white" fontWeight="bold">
         {nomeEleitoral}
       </Text>
