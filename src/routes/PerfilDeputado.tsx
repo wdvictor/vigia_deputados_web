@@ -8,7 +8,9 @@ import {
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
+  Flex,
   HStack,
+  Heading,
   Icon,
   Link,
   Spacer,
@@ -18,13 +20,21 @@ import {
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { BsTwitter, BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
+
 import { Params, useLoaderData } from "react-router-dom";
-import { secondaryColor } from "../custom-theme";
+import {
+  bitter,
+  mineralGreen,
+  secondaryColor,
+  spanishGreen,
+  thirdColor,
+  woodrush,
+} from "../custom-theme";
 
 import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
-import { IconType } from "react-icons";
+
 import NavBar from "../components/NavBar";
+import SideBar from "../components/deputado-perfil-components/SideBar";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -48,71 +58,34 @@ const PerfilDeputado = () => {
     lg: false,
     xl: true,
   });
-  const IconMap: { [key: string]: IconType } = {
-    twitter: BsTwitter,
-    facebook: BsFacebook,
-    instagram: BsInstagram,
-    youtube: BsYoutube,
-  };
-
-  function getRede(urlRede: string): string {
-    let rede = urlRede.replace("https://", "");
-    rede = rede.replace("www.", "");
-    let urlRedeList: string[] = rede.split(".");
-    console.warn(urlRedeList[0]);
-    return urlRedeList[0];
-  }
-
-  const SidebarContent = () => (
-    <VStack
-      backgroundColor={secondaryColor}
-      h="100%"
-      w={isLargeScreen ? "15%" : "100%"}
-    >
-      <Avatar
-        margin="10px"
-        boxSize="100px"
-        src={data?.dados.ultimoStatus.urlFoto}
-      />
-      <Text color="white" fontWeight="bold">
-        {data?.dados.ultimoStatus.nomeEleitoral}
-      </Text>
-
-      <Text color="white">{data?.dados.ultimoStatus.siglaPartido}</Text>
-      <HStack>
-        {data?.dados.redeSocial &&
-          data?.dados.redeSocial.map((r) => (
-            <Box key={r} p="10px">
-              <Link href={r} target="_blank" rel="noopener noreferrer">
-                <Spacer />
-                <Icon color="white" as={IconMap[getRede(r)]} />
-              </Link>
-            </Box>
-          ))}
-      </HStack>
-    </VStack>
-  );
 
   return (
-    <HStack display="flex" alignItems="start" h="100vh" w="100vw">
-      {!isLargeScreen && isLoading && (
-        <NavBar showDrawerIcon={true} onClick={onOpen} />
-      )}
-
+    <HStack display="flex" h="100vh" w="100vw">
       {isLargeScreen ? (
-        <SidebarContent />
+        <SideBar
+          isLargeScreen={isLargeScreen}
+          nomeEleitoral={data?.dados.ultimoStatus.nomeEleitoral!}
+          redesSociais={data?.dados.redeSocial}
+          siglaPartido={data?.dados.ultimoStatus.siglaPartido!}
+          urlFoto={data?.dados.ultimoStatus.urlFoto!}
+        />
       ) : (
         <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
           <DrawerOverlay padding="0px">
             <DrawerContent padding="0px">
               <DrawerBody padding="0px">
-                <SidebarContent />
+                <SideBar
+                  isLargeScreen={isLargeScreen!}
+                  nomeEleitoral={data?.dados.ultimoStatus.nomeEleitoral!}
+                  redesSociais={data?.dados.redeSocial}
+                  siglaPartido={data?.dados.ultimoStatus.siglaPartido!}
+                  urlFoto={data?.dados.ultimoStatus.urlFoto!}
+                />
               </DrawerBody>
             </DrawerContent>
           </DrawerOverlay>
         </Drawer>
       )}
-
       {isLoading && (
         <Box
           display="flex"
@@ -124,6 +97,29 @@ const PerfilDeputado = () => {
           <Spinner size="xl" />
         </Box>
       )}
+      <Box w="100%" h="100%">
+        {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
+        <Flex mt="5%" ml="2%">
+          <Box
+            w="40%"
+            h="30vh"
+            backgroundColor={secondaryColor}
+            p="10px"
+            textColor="white"
+          >
+            <Center>
+              <Heading>Gabiente</Heading>
+            </Center>
+            <HStack>
+              <Text>Gabine nº</Text>
+              <Text>{data?.dados.ultimoStatus.gabinete.nome}</Text>
+            </HStack>
+          </Box>
+
+          <Spacer />
+          <Box w="180px" h="10" bg="red.500" />
+        </Flex>
+      </Box>
     </HStack>
   );
 };
