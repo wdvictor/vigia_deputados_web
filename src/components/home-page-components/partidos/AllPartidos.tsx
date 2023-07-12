@@ -10,14 +10,7 @@ const AllPartidos = () => {
   const { data, isLoading, error } = usePartidos(pagina);
 
   if (error) return <div className="error-message text-danger">{error}</div>;
-  if (isLoading)
-    return (
-      <div className="grid-container content-container">
-        {Array.from({ length: 30 }, (_, index) => (
-          <AllDeputadosLoading index={index} />
-        ))}
-      </div>
-    );
+
   return (
     <div>
       <div className="grid-container content-container">

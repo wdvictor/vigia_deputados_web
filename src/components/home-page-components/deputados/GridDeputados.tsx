@@ -26,7 +26,11 @@ const GridDeputados = () => {
 
   return (
     <>
-      <Grid templateColumns="repeat(5, 1fr)" gap="3%" padding="3%">
+      <SimpleGrid
+        padding="5%"
+        margin="10px"
+        columns={{ sm: 1, md: 2, lg: 2, xl: 3 }}
+      >
         {isLoading &&
           skeletons.map((s) => (
             <DeputadoContainer key={s}>
@@ -38,7 +42,7 @@ const GridDeputados = () => {
             <DeputadoCard deputado={deputado} />
           </DeputadoContainer>
         ))}
-      </Grid>
+      </SimpleGrid>
 
       <Paginacao
         onPrevious={() => setPagina(pagina - 1)}

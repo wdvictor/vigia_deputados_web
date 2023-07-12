@@ -1,11 +1,10 @@
-import { Avatar } from "@mui/material";
-import React from "react";
-import { DeputadoPerfilResponse } from "../../service/camara-service/perfil-deputado-service";
+import { Image } from "@chakra-ui/react";
+import { DeputadoPerfilResponse } from "../../hooks/useDeputadosPerfil";
 
 const SideBar = ({ perfil }: { perfil: DeputadoPerfilResponse }) => {
   return (
     <div className="perfil-sidebar">
-      <Avatar
+      <Image
         className="mb-3"
         src={perfil?.dados.ultimoStatus.urlFoto}
         sx={{ width: 100, height: 100 }}

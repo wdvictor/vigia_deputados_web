@@ -1,20 +1,26 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
-import { primaryBlue, primaryGreen } from "../camara-theme";
+import { primaryColor, spanishGreen } from "../custom-theme";
 
 const NavBar = () => {
   return (
     <HStack
       justifyContent={"start"}
       width={"100vw"}
-      backgroundColor={primaryGreen}
+      backgroundColor={primaryColor}
     >
       <Image
-        margin="10px"
-        borderRadius="5px"
+        margin="10px 20px 10px 20px"
+        padding="5px"
+        borderRadius="10px"
         boxSize={"50px"}
         src="https://dibrarq.arquivonacional.gov.br/uploads/r/camara-dos-deputados/conf/logo.png"
       />
-      <Text margin={"0px"} fontWeight={"bold"} fontSize={"2xl"} color="white">
+      <Text
+        margin={"0px"}
+        fontWeight={"bold"}
+        fontSize={"2xl"}
+        color={spanishGreen}
+      >
         Vigia Deputados
       </Text>
     </HStack>

@@ -1,7 +1,8 @@
 import { Card, CardBody, Skeleton, SkeletonText } from "@chakra-ui/react";
-import { primaryBlue } from "../../../camara-theme";
+import { primaryColor } from "../../../custom-theme";
+
 const DeputadosSkeleton = () => (
-  <Card backgroundColor={primaryBlue}>
+  <Card backgroundColor={primaryColor}>
     <Skeleton height="200px"></Skeleton>
     <CardBody>
       <SkeletonText />
