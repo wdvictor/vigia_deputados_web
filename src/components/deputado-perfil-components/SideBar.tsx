@@ -44,6 +44,7 @@ const SideBar = ({
   }
   return (
     <VStack
+      m="0px"
       backgroundColor={secondaryColor}
       boxShadow="0px 5px 15px grey"
       h="100%"
