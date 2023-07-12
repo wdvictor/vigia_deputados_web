@@ -1,7 +1,5 @@
 import { Params, useLoaderData } from "react-router-dom";
 
-import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
-
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
   return { deputadoID };

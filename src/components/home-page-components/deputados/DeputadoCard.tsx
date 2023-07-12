@@ -4,20 +4,12 @@ import {
   Button,
   Card,
   CardBody,
-  Container,
-  Divider,
   Heading,
   Image,
   Text,
 } from "@chakra-ui/react";
 import { Dado } from "../../../hooks/UseDeputados";
-import {
-  primaryColor,
-  secondaryColor,
-  spanishGreen,
-  thirdColor,
-  woodrush,
-} from "../../../custom-theme";
+import { primaryColor, spanishGreen, woodrush } from "../../../custom-theme";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -47,24 +39,17 @@ const DeputadoCard = ({ deputado }: Props) => {
           <Badge>{deputado.siglaUf}</Badge>
         </CardBody>
       </Card>
-
-      <Button
-        borderRadius="0px 0px 20px 20px"
-        bg={woodrush}
-        color="white"
-        width="100%"
-      >
-        Visualizar
-      </Button>
-
-      {/* <Container
-        backgroundColor={primaryColor}
-        borderRadius="0px 0px 20px 20px"
-      >
-        <Text textAlign="center" padding="10px" color={spanishGreen}>
-          <Link to={`/perfil-deputado/${deputado.id}`}>Visualiar</Link>
-        </Text>
-      </Container> */}
+      <Link to={`/perfil-deputado/${deputado.id}`}>
+        <Button
+          borderRadius="0px 0px 20px 20px"
+          bg={woodrush}
+          color="white"
+          width="100%"
+          boxShadow="0px 10px 10px grey"
+        >
+          Visualizar
+        </Button>
+      </Link>
     </Box>
   );
 };

@@ -16,7 +16,7 @@ import PartidosTab from "./components/home-page-components/partidos/PartidosTab"
 function App() {
   return (
     <>
-      <VStack backgroundColor={`${spanishGreen}`}>
+      <VStack backgroundColor={`${spanishGreen}`} h="100%">
         <NavBar></NavBar>
         <Tabs variant="soft-rounded" colorScheme="green">
           <TabList justifyContent="center">
@@ -25,7 +25,7 @@ function App() {
           </TabList>
           <TabPanels>
             <TabPanel>
-              <Box w="100%">
+              <Box>
                 <DeputadosTab />
               </Box>
             </TabPanel>

@@ -4,7 +4,7 @@ import Paginacao from "../Paginacao";
 import { useState } from "react";
 
 import useDeputados from "../../../hooks/UseDeputados";
-import { SimpleGrid } from "@chakra-ui/react";
+import { Container, SimpleGrid, VStack } from "@chakra-ui/react";
 
 import DeputadosSkeleton from "./DeputadosSkeleton";
 import DeputadoContainer from "./DeputadoContainer";
@@ -17,7 +17,7 @@ const DeputadosTab = () => {
   if (error) return <div className="error-message text-danger">{error}</div>;
 
   return (
-    <>
+    <VStack>
       <SimpleGrid
         padding="1%"
         columns={{ sm: 1, md: 2, lg: 2, xl: 3 }}
@@ -35,14 +35,13 @@ const DeputadosTab = () => {
           </DeputadoContainer>
         ))}
       </SimpleGrid>
-
       <Paginacao
         onPrevious={() => setPagina(pagina - 1)}
         showNextButton={data?.dados.length !== 0}
         pagina={pagina}
         onNext={() => setPagina(pagina + 1)}
       />
-    </>
+    </VStack>
   );
 };
 
