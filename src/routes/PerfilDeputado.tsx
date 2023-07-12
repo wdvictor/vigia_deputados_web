@@ -1,40 +1,24 @@
 import {
-  Avatar,
-  Badge,
   Box,
-  Button,
-  Center,
   Drawer,
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
   Flex,
   HStack,
-  Heading,
-  Icon,
-  Link,
   Spacer,
   Spinner,
-  Text,
-  VStack,
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
 
 import { Params, useLoaderData } from "react-router-dom";
-import {
-  bitter,
-  mineralGreen,
-  secondaryColor,
-  spanishGreen,
-  thirdColor,
-  woodrush,
-} from "../custom-theme";
 
 import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
 
 import NavBar from "../components/NavBar";
 import SideBar from "../components/deputado-perfil-components/SideBar";
+import GabineteContainer from "../components/deputado-perfil-components/Gabinete";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -100,21 +84,7 @@ const PerfilDeputado = () => {
       <Box w="100%" h="100%">
         {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
         <Flex mt="5%" ml="2%">
-          <Box
-            w="40%"
-            h="30vh"
-            backgroundColor={secondaryColor}
-            p="10px"
-            textColor="white"
-          >
-            <Center>
-              <Heading>Gabiente</Heading>
-            </Center>
-            <HStack>
-              <Text>Gabine nº</Text>
-              <Text>{data?.dados.ultimoStatus.gabinete.nome}</Text>
-            </HStack>
-          </Box>
+          <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
 
           <Spacer />
           <Box w="180px" h="10" bg="red.500" />
