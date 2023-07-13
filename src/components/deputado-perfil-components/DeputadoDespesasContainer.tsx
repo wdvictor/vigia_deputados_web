@@ -1,60 +1,30 @@
 import {
   Box,
   Center,
+  Flex,
   Heading,
   Spinner,
   VStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-import { primaryColor, secondaryColor } from "../../custom-theme";
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
+  bitter,
+  mineralGreen,
+  primaryColor,
+  secondaryColor,
+  spanishGreen,
+  thirdColor,
+  woodrush,
+} from "../../custom-theme";
 
 import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
-export const options = {
-  // responsive: true,
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-    title: {
-      display: true,
-    },
-  },
-};
+import GraficoDespesasBar from "./GraficoDespesasBar";
 
-const chartLabels = [
-  "Janeiro",
-  "Fevereiro",
-  "Março",
-  "Abril",
-  "Maio",
-  "Junho",
-  "Julho",
-  "Agosto",
-  "Setembro",
-  "Outubro",
-  "Novembro",
-  "Dezembro",
-];
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
   const isLargeScreen = useBreakpointValue({
@@ -64,48 +34,66 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
     lg: false,
     xl: true,
   });
-  const currentYear: number = new Date().getFullYear();
+
   const { data, isLoading, error } = useDeputadoDespesa(
     deputadoID,
-    currentYear
+    new Date().getFullYear()
   );
 
-  let chartData: Map<string, number> = new Map();
+  let tipoDespesas: Map<string, number> = new Map();
   function createChartInfo() {
-    let despesasMap: Map<number, number> = new Map();
     if (data?.dados) {
-      for (let d of data.dados) {
-        if (despesasMap.has(d.mes)) {
-          despesasMap.set(d.mes, d.valorDocumento + despesasMap.get(d.mes)!);
+      for (let d of data?.dados) {
+        if (tipoDespesas.has(d.tipoDespesa)) {
+          tipoDespesas.set(
+            d.tipoDespesa,
+            d.valorDocumento + tipoDespesas.get(d.tipoDespesa)!
+          );
         } else {
-          despesasMap.set(d.mes, d.valorDocumento);
+          tipoDespesas.set(d.tipoDespesa, d.valorDocumento);
         }
       }
     }
-    for (let d of despesasMap) {
-      chartData.set(chartLabels[d[0] - 1], d[1]);
-    }
   }
   createChartInfo();
+  const chartColors = [
+    spanishGreen,
+    mineralGreen,
+    bitter,
+    woodrush,
+    primaryColor,
+    secondaryColor,
+  ];
 
-  const labels: string[] = [...chartData.keys()];
-  const chartInfo = {
-    labels,
+  const chartData = {
+    labels: [...tipoDespesas.keys()],
     datasets: [
       {
-        label: `Despesas ${currentYear}`,
-        data: [...chartData.values()].map((value) =>
-          parseFloat(value.toFixed(2))
+        label: "Tipo de despesas",
+        data: [...tipoDespesas.values()],
+        backgroundColor: [...tipoDespesas.entries()].map(
+          (v, index) => chartColors[index]
         ),
-        backgroundColor: primaryColor,
       },
     ],
   };
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "top" as const,
+      },
+      title: {
+        display: true,
+      },
+    },
+  };
+
   return (
-    <Box
+    <VStack
       mt="5%"
-      h={isLargeScreen ? "90%" : "25%"}
+      h={isLargeScreen ? "100%" : "25%"}
       w={isLargeScreen ? "70%" : "350px"}
       border={`2px solid ${secondaryColor}`}
       borderRadius="15px"
@@ -128,9 +116,17 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
           Despesas
         </Heading>
       </Center>
-
-      <Bar data={chartInfo} options={options} />
-    </Box>
+      <Flex direction="column" h="100%" width="100%">
+        <Box flex={1}>
+          <GraficoDespesasBar data={data!} />
+        </Box>
+        <Box flex={1}>
+          <Center>
+            <Pie data={chartData} options={options} />
+          </Center>
+        </Box>
+      </Flex>
+    </VStack>
   );
 };
 

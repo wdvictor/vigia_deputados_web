@@ -23,7 +23,7 @@ const GabineteContainer = ({
       await navigator.clipboard.writeText(text);
       alert("Email copiado");
     } catch (err) {
-      console.error("Falha ao copiar o texto: ", err);
+      alert("Falha ao copiar o texto");
     }
   };
   return (

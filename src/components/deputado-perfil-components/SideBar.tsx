@@ -12,7 +12,7 @@ import React from "react";
 import { secondaryColor } from "../../custom-theme";
 import { BsTwitter, BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
 import { IconType } from "react-icons";
-
+import "../../App.css";
 interface Props {
   nomeEleitoral: string;
   siglaPartido: string;
@@ -39,7 +39,7 @@ const SideBar = ({
     let rede = urlRede.replace("https://", "");
     rede = rede.replace("www.", "");
     let urlRedeList: string[] = rede.split(".");
-    console.warn(urlRedeList[0]);
+
     return urlRedeList[0];
   }
   return (
