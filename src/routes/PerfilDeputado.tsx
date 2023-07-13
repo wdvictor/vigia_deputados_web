@@ -48,14 +48,7 @@ const PerfilDeputado = () => {
   });
 
   return (
-    <HStack
-      display="flex"
-      h="100vh"
-      w="100vw"
-      m="0px"
-      p="0px"
-      backgroundColor="bisque"
-    >
+    <HStack h={isLargeScreen ? "100vh" : "200vh"} w="100vw">
       {isLargeScreen ? (
         <SideBar
           isLargeScreen={isLargeScreen}
@@ -93,16 +86,17 @@ const PerfilDeputado = () => {
         </Box>
       )}
 
-      <Flex w="100%" h="100%" direction={isLargeScreen ? "row" : "column"}>
-        {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
-        <Flex mt="5%" ml="2%" mr="2%" direction="column" h="100%">
-          <DadosPessoaisContainer data={data} />
-          <Box h="2%"></Box>
-          <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
+      {!isLoading && (
+        <Flex w="100%" h="100%" direction={isLargeScreen ? "row" : "column"}>
+          {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
+          <Flex mt="5%" ml="2%" mr="2%" direction="column" alignItems="center">
+            <DadosPessoaisContainer data={data} />
+            <Box h="2%"></Box>
+            <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
+          </Flex>
+          <DeputadoDespesasContainer deputadoID={deputadoID} />
         </Flex>
-
-        <DeputadoDespesasContainer />
-      </Flex>
+      )}
     </HStack>
   );
 };

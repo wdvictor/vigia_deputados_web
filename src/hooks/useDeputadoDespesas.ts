@@ -32,6 +32,6 @@ export interface Link {
 }
 
 
-const useDeputadoDespesa = (deputadoID: string) => useData<DeputadoDespesaResponse>(`/deputados/${deputadoID}/despesas`, null);
+const useDeputadoDespesa = (deputadoID: number, ano: number) => useData<DeputadoDespesaResponse>(`/deputados/${deputadoID}/despesas`, null, [`ano=${ano}`, 'ordenarPor=mes', 'ordem=desc']);
 
 export default useDeputadoDespesa;
