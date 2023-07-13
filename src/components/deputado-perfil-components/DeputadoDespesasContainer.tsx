@@ -14,7 +14,6 @@ import {
   primaryColor,
   secondaryColor,
   spanishGreen,
-  thirdColor,
   woodrush,
 } from "../../custom-theme";
 
@@ -80,6 +79,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
 
   const options = {
     responsive: true,
+    scale: 2,
     plugins: {
       legend: {
         position: "top" as const,
@@ -93,7 +93,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
   return (
     <VStack
       mt="5%"
-      h={isLargeScreen ? "100%" : "25%"}
+      h={isLargeScreen ? "100%" : "40%"}
       w={isLargeScreen ? "70%" : "350px"}
       border={`2px solid ${secondaryColor}`}
       borderRadius="15px"
@@ -118,10 +118,12 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
       </Center>
       <Flex direction="column" h="100%" width="100%">
         <Box flex={1}>
-          <GraficoDespesasBar data={data!} />
+          <Center h="100%" w="100%">
+            <GraficoDespesasBar data={data!} />
+          </Center>
         </Box>
         <Box flex={1}>
-          <Center>
+          <Center h="100%">
             <Pie data={chartData} options={options} />
           </Center>
         </Box>
