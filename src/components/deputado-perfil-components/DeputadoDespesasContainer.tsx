@@ -7,11 +7,54 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-import { secondaryColor } from "../../custom-theme";
+import { primaryColor, secondaryColor } from "../../custom-theme";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
-import useDeputadoDespesa, {
-  DeputadoDespesaResponse,
-} from "../../hooks/useDeputadoDespesas";
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
+export const options = {
+  // responsive: true,
+  plugins: {
+    legend: {
+      position: "top" as const,
+    },
+    title: {
+      display: true,
+    },
+  },
+};
+
+const chartLabels = [
+  "Janeiro",
+  "Fevereiro",
+  "Março",
+  "Abril",
+  "Maio",
+  "Junho",
+  "Julho",
+  "Agosto",
+  "Setembro",
+  "Outubro",
+  "Novembro",
+  "Dezembro",
+];
 
 const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
   const isLargeScreen = useBreakpointValue({
@@ -27,22 +70,40 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
     currentYear
   );
 
-  let chartLabels = new Set();
-  let chartData: Map<number, number> = new Map();
-  function createChartLabels() {
+  let chartData: Map<string, number> = new Map();
+  function createChartInfo() {
+    let despesasMap: Map<number, number> = new Map();
     if (data?.dados) {
       for (let d of data.dados) {
-        if (chartData.has(d.mes)) {
-          chartData.set(d.mes, d.valorDocumento + chartData.get(d.mes)!);
+        if (despesasMap.has(d.mes)) {
+          despesasMap.set(d.mes, d.valorDocumento + despesasMap.get(d.mes)!);
         } else {
-          chartData.set(d.mes, d.valorDocumento);
+          despesasMap.set(d.mes, d.valorDocumento);
         }
       }
     }
-
-    console.warn(chartData);
+    for (let d of despesasMap) {
+      chartData.set(chartLabels[d[0] - 1], d[1]);
+    }
   }
-  createChartLabels();
+  createChartInfo();
+
+  const labels: string[] = [...chartData.keys()];
+  const d: number[] = [...chartData.values()].map((value) =>
+    parseFloat(value.toFixed(2))
+  );
+  console.log(d);
+  const chartInfo = {
+    labels,
+    datasets: [
+      {
+        label: `Despesas ${currentYear}`,
+        data: d,
+        backgroundColor: primaryColor,
+      },
+    ],
+  };
+
   return (
     <Box
       mt="5%"
@@ -69,7 +130,8 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
           Despesas
         </Heading>
       </Center>
-      <VStack h="70%" justifyContent="space-around"></VStack>
+
+      <Bar data={chartInfo} options={options} />
     </Box>
   );
 };
