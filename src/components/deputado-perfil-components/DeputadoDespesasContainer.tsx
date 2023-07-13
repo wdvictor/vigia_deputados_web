@@ -89,16 +89,14 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
   createChartInfo();
 
   const labels: string[] = [...chartData.keys()];
-  const d: number[] = [...chartData.values()].map((value) =>
-    parseFloat(value.toFixed(2))
-  );
-  console.log(d);
   const chartInfo = {
     labels,
     datasets: [
       {
         label: `Despesas ${currentYear}`,
-        data: d,
+        data: [...chartData.values()].map((value) =>
+          parseFloat(value.toFixed(2))
+        ),
         backgroundColor: primaryColor,
       },
     ],
