@@ -11,7 +11,9 @@ const GabineteInfoRow = ({ title, data }: Props) => {
       <Box flex={1} color="gray">
         {title}
       </Box>
-      <Box flex={1}>{data ? data : "-"}</Box>
+      <Box flex={1} fontFamily="Montserrat-medium">
+        {data ? data : "-"}
+      </Box>
     </Flex>
   );
 };
