@@ -34,7 +34,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
     xl: true,
   });
 
-  const { data, isLoading, error } = useDeputadoDespesa(
+  const { data, isLoading } = useDeputadoDespesa(
     deputadoID,
     new Date().getFullYear()
   );
@@ -71,7 +71,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
         label: "Tipo de despesas",
         data: [...tipoDespesas.values()],
         backgroundColor: [...tipoDespesas.entries()].map(
-          (v, index) => chartColors[index]
+          (_, index) => chartColors[index]
         ),
       },
     ],

@@ -9,8 +9,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Dado } from "../../../hooks/UseDeputados";
-import { primaryColor, spanishGreen, woodrush } from "../../../custom-theme";
+import { secondaryColor } from "../../../custom-theme";
 import { Link } from "react-router-dom";
+import toTitleCase from "../../../service/functions-services";
 
 interface Props {
   deputado: Dado;
@@ -20,7 +21,8 @@ const DeputadoCard = ({ deputado }: Props) => {
   return (
     <Box>
       <Card
-        backgroundColor={primaryColor}
+        border={`1px solid ${secondaryColor}`}
+        backgroundColor="transparent"
         display="flex"
         flexDirection="row"
         alignItems="center"
@@ -30,11 +32,11 @@ const DeputadoCard = ({ deputado }: Props) => {
       >
         <Image src={deputado.urlFoto} boxSize="200px" />
         <CardBody>
-          <Heading size="md" color={spanishGreen}>
-            {deputado.nome}
+          <Heading size="md" color={secondaryColor}>
+            {toTitleCase(deputado.nome)}
           </Heading>
 
-          <Text color={spanishGreen}>{deputado.siglaPartido}</Text>
+          <Text color={secondaryColor}>{deputado.siglaPartido}</Text>
 
           <Badge>{deputado.siglaUf}</Badge>
         </CardBody>
@@ -42,7 +44,7 @@ const DeputadoCard = ({ deputado }: Props) => {
       <Link to={`/perfil-deputado/${deputado.id}`}>
         <Button
           borderRadius="0px 0px 20px 20px"
-          bg={woodrush}
+          bg={secondaryColor}
           color="white"
           width="100%"
           boxShadow="0px 10px 10px grey"

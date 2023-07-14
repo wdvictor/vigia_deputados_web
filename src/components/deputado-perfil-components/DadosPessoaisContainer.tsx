@@ -1,18 +1,9 @@
-import {
-  Center,
-  Heading,
-  VStack,
-  Spacer,
-  HStack,
-  IconButton,
-  Box,
-} from "@chakra-ui/react";
+import { Center, Heading, VStack, Spacer, Box } from "@chakra-ui/react";
 
-import React from "react";
-import { BiPaste } from "react-icons/bi";
 import { secondaryColor } from "../../custom-theme";
 import GabineteInfoRow from "./GabineteInfoRow";
 import { DeputadoPerfilResponse } from "../../hooks/useDeputadosPerfil";
+import toTitleCase from "../../service/functions-services";
 
 const DadosPessoaisContainer = ({
   data,
@@ -38,7 +29,10 @@ const DadosPessoaisContainer = ({
         <Heading size="md">Dados Pessoais</Heading>
       </Center>
       <VStack h="70%" justifyContent="space-around">
-        <GabineteInfoRow title="Nome Civíl" data={data?.dados.nomeCivil} />
+        <GabineteInfoRow
+          title="Nome Civíl"
+          data={toTitleCase(data?.dados.nomeCivil!)}
+        />
         <GabineteInfoRow
           title="Data Nascimento"
           data={getDataNascimento(data?.dados.dataNascimento.toString())}
