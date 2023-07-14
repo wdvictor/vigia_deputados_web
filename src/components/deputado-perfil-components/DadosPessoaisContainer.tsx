@@ -18,14 +18,13 @@ const DadosPessoaisContainer = ({
 
   return (
     <Box
-      h="350px"
       w="350px"
       border={`2px solid ${secondaryColor}`}
       borderRadius="15px"
       textColor="black"
       p="20px"
     >
-      <Center h="20%">
+      <Center pb="20px">
         <Heading size="md">Dados Pessoais</Heading>
       </Center>
       <VStack h="70%" justifyContent="space-around">

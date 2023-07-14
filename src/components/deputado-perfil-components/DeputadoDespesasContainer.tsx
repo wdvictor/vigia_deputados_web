@@ -82,7 +82,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
     scale: 2,
     plugins: {
       legend: {
-        position: "top" as const,
+        position: "right" as const,
       },
       title: {
         display: true,
@@ -92,7 +92,6 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
 
   return (
     <VStack
-      mt="5%"
       h={isLargeScreen ? "100%" : "40%"}
       w={isLargeScreen ? "70%" : "350px"}
       border={`2px solid ${secondaryColor}`}

@@ -87,14 +87,22 @@ const PerfilDeputado = () => {
       )}
 
       {!isLoading && (
-        <Flex w="100%" h="100%" direction={isLargeScreen ? "row" : "column"}>
+        <Flex
+          w="100%"
+          h="100%"
+          p="50px 20px 50px 20px"
+          direction={isLargeScreen ? "row" : "column"}
+          overflow="hidden"
+          gap="5"
+        >
           {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
-          <Flex mt="5%" ml="2%" mr="2%" direction="column" alignItems="center">
+          <Flex direction="column" alignItems="center" gap="5">
             <DadosPessoaisContainer data={data} />
-            <Box h="2%"></Box>
             <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
           </Flex>
+          <Spacer />
           <DeputadoDespesasContainer deputadoID={deputadoID} />
+          <Spacer />
         </Flex>
       )}
     </HStack>
