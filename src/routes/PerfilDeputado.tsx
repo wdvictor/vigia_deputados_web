@@ -52,6 +52,9 @@ const PerfilDeputado = () => {
     xl: true,
   });
 
+  const contentPadding = isLargeScreen
+    ? "50px 20px 20px 20px"
+    : "0px 10px 20px 10px";
   return (
     <HStack h={isLargeScreen ? "100vh" : "200vh"} w="100vw">
       {isLargeScreen ? (
@@ -95,7 +98,7 @@ const PerfilDeputado = () => {
         <Flex
           w="100%"
           h="100%"
-          p="50px 20px 50px 20px"
+          p={contentPadding}
           direction={isLargeScreen ? "row" : "column"}
           overflow="hidden"
           gap="5"

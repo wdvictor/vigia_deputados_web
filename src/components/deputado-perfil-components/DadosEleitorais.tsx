@@ -9,7 +9,7 @@ const DadosEleitorais = ({ data }: { data: DeputadoPerfilResponse }) => {
     <Box
       border={`2px solid ${secondaryColor}`}
       borderRadius="15px"
-      w="100%"
+      w="350px"
       h="100%"
       p="20px"
     >
