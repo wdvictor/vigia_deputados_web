@@ -8,8 +8,17 @@ import {
   secondaryColor,
 } from "../../custom-theme";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
+import { useBreakpointValue } from "@chakra-ui/react";
 
 const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
+  const isLargeScreen = useBreakpointValue({
+    base: false,
+    sm: false,
+    md: false,
+    lg: true,
+    xl: true,
+  });
+
   let tipoDespesas: Map<string, number> = new Map();
   function createChartInfo() {
     if (data?.dados) {
@@ -76,8 +85,8 @@ const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: "right" as const,
-        align: "center" as const,
+        position: isLargeScreen ? ("right" as const) : ("bottom" as const),
+        align: isLargeScreen ? ("center" as const) : ("start" as const),
       },
       title: {
         display: false,
