@@ -48,15 +48,15 @@ const PerfilDeputado = () => {
     base: false,
     sm: false,
     md: false,
-    lg: false,
+    lg: true,
     xl: true,
   });
 
   const contentPadding = isLargeScreen
-    ? "50px 20px 20px 20px"
-    : "0px 10px 20px 10px";
+    ? "20px 20px 20px 20px"
+    : "0px 10px 20px 0px";
   return (
-    <HStack h={isLargeScreen ? "100vh" : "200vh"} w="100vw">
+    <HStack h={isLargeScreen ? "100vh" : "150vh"} w="100vw">
       {isLargeScreen ? (
         <SideBar
           isLargeScreen={isLargeScreen}
@@ -97,20 +97,20 @@ const PerfilDeputado = () => {
       {!isLoading && (
         <Flex
           w="100%"
-          h="100%"
+          h={isLargeScreen ? "100%" : "150%"}
           p={contentPadding}
           direction={isLargeScreen ? "row" : "column"}
           overflow="hidden"
           gap="5"
         >
           {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
-          <Flex direction="column" alignItems="center" gap={5}>
-            <Flex direction={isLargeScreen ? "column" : "row"} gap={5}>
-              <DadosPessoaisContainer data={data} />
-              <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
-              <DadosEleitorais data={data!} />
-            </Flex>
+
+          <Flex direction={"column"} gap={5} h="100%" alignItems="center">
+            <DadosPessoaisContainer data={data} />
+            <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
+            <DadosEleitorais data={data!} />
           </Flex>
+
           {isLargeScreen && <Spacer />}
 
           <DeputadoDespesasContainer deputadoID={deputadoID} />

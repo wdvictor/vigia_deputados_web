@@ -20,6 +20,7 @@ const DadosPessoaisContainer = ({
   return (
     <Box
       w="350px"
+      h="350px"
       border={`2px solid ${secondaryColor}`}
       borderRadius="15px"
       textColor="black"

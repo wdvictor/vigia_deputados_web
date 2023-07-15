@@ -24,7 +24,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
     base: false,
     sm: false,
     md: false,
-    lg: false,
+    lg: true,
     xl: true,
   });
 
@@ -35,7 +35,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
 
   return (
     <VStack
-      h={isLargeScreen ? "100%" : "40%"}
+      h={isLargeScreen ? "100%" : "100%"}
       w={isLargeScreen ? "70%" : "350px"}
       border={`2px solid ${secondaryColor}`}
       borderRadius="15px"
@@ -64,7 +64,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
             <GraficoDespesasBar data={data!} />
           </Center>
         </Box>
-        <Box flex={1}>
+        <Box flex={2}>
           <Center h="100%">
             <GraficoDesespaTipo data={data!} />
           </Center>

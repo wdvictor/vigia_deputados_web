@@ -76,7 +76,8 @@ const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
     responsive: true,
     plugins: {
       legend: {
-        align: "start" as const,
+        position: "right" as const,
+        align: "center" as const,
       },
       title: {
         display: false,
