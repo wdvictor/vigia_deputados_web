@@ -8,20 +8,14 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-import {
-  bitter,
-  mineralGreen,
-  primaryColor,
-  secondaryColor,
-  spanishGreen,
-  woodrush,
-} from "../../custom-theme";
+import { secondaryColor } from "../../custom-theme";
 
 import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
 import GraficoDespesasBar from "./GraficoDespesasBar";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
+
+import GraficoDesespaTipo from "./GraficoDesespaTipo";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -38,57 +32,6 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
     deputadoID,
     new Date().getFullYear()
   );
-
-  let tipoDespesas: Map<string, number> = new Map();
-  function createChartInfo() {
-    if (data?.dados) {
-      for (let d of data?.dados) {
-        if (tipoDespesas.has(d.tipoDespesa)) {
-          tipoDespesas.set(
-            d.tipoDespesa,
-            d.valorDocumento + tipoDespesas.get(d.tipoDespesa)!
-          );
-        } else {
-          tipoDespesas.set(d.tipoDespesa, d.valorDocumento);
-        }
-      }
-    }
-  }
-  createChartInfo();
-  const chartColors = [
-    spanishGreen,
-    mineralGreen,
-    bitter,
-    woodrush,
-    primaryColor,
-    secondaryColor,
-  ];
-
-  const chartData = {
-    labels: [...tipoDespesas.keys()],
-    datasets: [
-      {
-        label: "Tipo de despesas",
-        data: [...tipoDespesas.values()],
-        backgroundColor: [...tipoDespesas.entries()].map(
-          (_, index) => chartColors[index]
-        ),
-      },
-    ],
-  };
-
-  const options = {
-    responsive: true,
-    scale: 2,
-    plugins: {
-      legend: {
-        position: "right" as const,
-      },
-      title: {
-        display: true,
-      },
-    },
-  };
 
   return (
     <VStack
@@ -123,7 +66,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
         </Box>
         <Box flex={1}>
           <Center h="100%">
-            <Pie data={chartData} options={options} />
+            <GraficoDesespaTipo data={data!} />
           </Center>
         </Box>
       </Flex>

@@ -1,11 +1,13 @@
 import {
   Box,
+  Center,
   Drawer,
   DrawerBody,
   DrawerContent,
   DrawerOverlay,
   Flex,
   HStack,
+  Heading,
   Spacer,
   Spinner,
   VStack,
@@ -22,6 +24,8 @@ import SideBar from "../components/deputado-perfil-components/SideBar";
 import GabineteContainer from "../components/deputado-perfil-components/Gabinete";
 import DadosPessoaisContainer from "../components/deputado-perfil-components/DadosPessoaisContainer";
 import DeputadoDespesasContainer from "../components/deputado-perfil-components/DeputadoDespesasContainer";
+import { secondaryColor } from "../custom-theme";
+import InfoRow from "../components/deputado-perfil-components/InfoRow";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -37,7 +41,7 @@ const PerfilDeputado = () => {
 
   const paramsData = useLoaderData();
   const deputadoID = (paramsData as LoaderData).deputadoID;
-  const { data, isLoading, error } = useDeputadosPerfil(deputadoID);
+  const { data, isLoading } = useDeputadosPerfil(deputadoID);
 
   const isLargeScreen = useBreakpointValue({
     base: false,
@@ -99,6 +103,27 @@ const PerfilDeputado = () => {
           <Flex direction="column" alignItems="center" gap="5">
             <DadosPessoaisContainer data={data} />
             <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
+            <Box
+              border={`2px solid ${secondaryColor}`}
+              borderRadius="15px"
+              w="100%"
+              h="100%"
+              p="20px"
+            >
+              <Center mb="20px">
+                <Heading size="md">Dados Eleitorais</Heading>
+              </Center>
+              <VStack justifyContent="space-between">
+                <InfoRow
+                  title="Condição Eleitoral"
+                  data={data?.dados.ultimoStatus.condicaoEleitoral}
+                />
+                <InfoRow
+                  title="Situação"
+                  data={data?.dados.ultimoStatus.situacao}
+                />
+              </VStack>
+            </Box>
           </Flex>
           <Spacer />
           <DeputadoDespesasContainer deputadoID={deputadoID} />

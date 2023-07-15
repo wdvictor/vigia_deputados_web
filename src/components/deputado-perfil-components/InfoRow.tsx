@@ -1,11 +1,11 @@
-import { Flex, Center, Box } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 
 interface Props {
   title: string;
   data: string | undefined;
 }
 
-const GabineteInfoRow = ({ title, data }: Props) => {
+const InfoRow = ({ title, data }: Props) => {
   return (
     <Flex direction="row" w="100%">
       <Box flex={1} color="gray">
@@ -18,4 +18,4 @@ const GabineteInfoRow = ({ title, data }: Props) => {
   );
 };
 
-export default GabineteInfoRow;
+export default InfoRow;

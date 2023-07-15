@@ -1,9 +1,10 @@
 import { Center, Heading, VStack, Spacer, Box } from "@chakra-ui/react";
 
 import { secondaryColor } from "../../custom-theme";
-import GabineteInfoRow from "./GabineteInfoRow";
+
 import { DeputadoPerfilResponse } from "../../hooks/useDeputadosPerfil";
 import toTitleCase from "../../service/functions-services";
+import InfoRow from "./InfoRow";
 
 const DadosPessoaisContainer = ({
   data,
@@ -28,23 +29,20 @@ const DadosPessoaisContainer = ({
         <Heading size="md">Dados Pessoais</Heading>
       </Center>
       <VStack h="70%" justifyContent="space-around">
-        <GabineteInfoRow
+        <InfoRow
           title="Nome Civíl"
           data={toTitleCase(data?.dados.nomeCivil!)}
         />
-        <GabineteInfoRow
+        <InfoRow
           title="Data Nascimento"
           data={getDataNascimento(data?.dados.dataNascimento.toString())}
         />
-        <GabineteInfoRow title="Escolaridade" data={data?.dados.escolaridade} />
-        <GabineteInfoRow
+        <InfoRow title="Escolaridade" data={data?.dados.escolaridade} />
+        <InfoRow
           title="Município Nascimento"
           data={data?.dados.municipioNascimento}
         />
-        <GabineteInfoRow
-          title="UF Nascimento"
-          data={data?.dados.ufNascimento}
-        />
+        <InfoRow title="UF Nascimento" data={data?.dados.ufNascimento} />
 
         <Spacer />
       </VStack>

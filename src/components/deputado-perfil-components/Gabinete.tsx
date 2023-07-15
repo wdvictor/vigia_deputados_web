@@ -10,8 +10,9 @@ import {
 } from "@chakra-ui/react";
 import { secondaryColor } from "../../custom-theme";
 import { Gabinete } from "../../hooks/useDeputadosPerfil";
-import GabineteInfoRow from "./GabineteInfoRow";
+
 import { BiPaste } from "react-icons/bi";
+import InfoRow from "./InfoRow";
 const GabineteContainer = ({
   gabinete,
 }: {
@@ -34,14 +35,14 @@ const GabineteContainer = ({
       textColor="black"
       p="20px"
     >
-      <Center h="20%">
+      <Center mb="20px">
         <Heading size="md">Gabiente</Heading>
       </Center>
       <VStack h="70%" justifyContent="space-around">
-        <GabineteInfoRow title="Prédio" data={gabinete?.predio} />
-        <GabineteInfoRow title="Andar" data={gabinete?.andar} />
-        <GabineteInfoRow title="Sala" data={gabinete?.sala} />
-        <GabineteInfoRow title="Telefone" data={gabinete?.telefone} />
+        <InfoRow title="Prédio" data={gabinete?.predio} />
+        <InfoRow title="Andar" data={gabinete?.andar} />
+        <InfoRow title="Sala" data={gabinete?.sala} />
+        <InfoRow title="Telefone" data={gabinete?.telefone} />
         <Spacer />
         <HStack>
           <Text m="0px" color="gray">
@@ -50,6 +51,8 @@ const GabineteContainer = ({
           <IconButton
             icon={<BiPaste />}
             aria-label="copy-icon"
+            color={secondaryColor}
+            border={`1px solid ${secondaryColor}`}
             onClick={() =>
               copyToClipboard(gabinete?.email ? gabinete.email : "")
             }
