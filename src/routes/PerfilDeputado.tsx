@@ -104,12 +104,15 @@ const PerfilDeputado = () => {
           gap="5"
         >
           {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
-          <Flex direction="column" alignItems="center" gap="5">
-            <DadosPessoaisContainer data={data} />
-            <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
-            <DadosEleitorais data={data!} />
+          <Flex direction="column" alignItems="center" gap={5}>
+            <Flex direction={isLargeScreen ? "column" : "row"} gap={5}>
+              <DadosPessoaisContainer data={data} />
+              <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
+              <DadosEleitorais data={data!} />
+            </Flex>
           </Flex>
-          <Spacer />
+          {isLargeScreen && <Spacer />}
+
           <DeputadoDespesasContainer deputadoID={deputadoID} />
           <Spacer />
         </Flex>
