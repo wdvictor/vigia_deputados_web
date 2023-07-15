@@ -39,10 +39,14 @@ const GabineteContainer = ({
         <Heading size="md">Gabiente</Heading>
       </Center>
       <VStack h="70%" justifyContent="space-around">
-        <InfoRow title="Prédio" data={gabinete?.predio} />
+        <HStack w="100%">
+          <InfoRow title="Gabinete" data={gabinete?.sala} />
+          <InfoRow title="Anexo" data={gabinete?.predio} />
+        </HStack>
+
         <InfoRow title="Andar" data={gabinete?.andar} />
-        <InfoRow title="Sala" data={gabinete?.sala} />
-        <InfoRow title="Telefone" data={gabinete?.telefone} />
+
+        <InfoRow title="Telefone" data={`(61) ${gabinete?.telefone}`} />
         <Spacer />
         <HStack>
           <Text m="0px" color="gray">

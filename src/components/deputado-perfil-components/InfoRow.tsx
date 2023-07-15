@@ -8,10 +8,10 @@ interface Props {
 const InfoRow = ({ title, data }: Props) => {
   return (
     <Flex direction="row" w="100%">
-      <Box flex={1} color="gray">
+      <Box flex={1} color="gray" fontFamily="inter-medium">
         {title}
       </Box>
-      <Box flex={1} fontFamily="Montserrat-medium">
+      <Box flex={1} fontFamily="inter-light">
         {data ? data : "-"}
       </Box>
     </Flex>
