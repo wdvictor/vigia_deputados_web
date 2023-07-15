@@ -10,7 +10,6 @@ import {
 import { Bar } from "react-chartjs-2";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
 import { primaryColor } from "../../custom-theme";
-import { Box } from "@chakra-ui/react";
 
 ChartJS.register(
   CategoryScale,
