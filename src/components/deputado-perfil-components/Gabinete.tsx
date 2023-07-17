@@ -54,6 +54,7 @@ const GabineteContainer = ({
           </Text>
           <IconButton
             icon={<BiPaste />}
+            size="lg"
             aria-label="copy-icon"
             color={secondaryColor}
             border={`1px solid ${secondaryColor}`}

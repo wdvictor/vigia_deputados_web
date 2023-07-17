@@ -7,16 +7,11 @@ import {
   secondaryColor,
 } from "../../custom-theme";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
-import { useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, IconButton, Spacer, useToast } from "@chakra-ui/react";
+import { AiOutlineInfoCircle } from "react-icons/ai";
 
 const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
-  const isLargeScreen = useBreakpointValue({
-    base: false,
-    sm: false,
-    md: false,
-    lg: true,
-    xl: true,
-  });
+  const toast = useToast();
 
   let tipoDespesas: Map<string, number> = new Map();
   function createChartInfo() {
@@ -84,15 +79,48 @@ const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
     responsive: true,
     plugins: {
       legend: {
-        position: isLargeScreen ? ("right" as const) : ("bottom" as const),
-        align: isLargeScreen ? ("center" as const) : ("start" as const),
+        position: "bottom" as const,
+        align: "start" as const,
       },
       title: {
         display: false,
       },
     },
   };
-  return <Pie data={chartData} options={options} />;
+  return (
+    <Flex w="100%" h="100%" alignItems="end">
+      <IconButton
+        m="10px"
+        size="lg"
+        icon={<AiOutlineInfoCircle />}
+        aria-label="copy-icon"
+        color={secondaryColor}
+        border={`1px solid ${secondaryColor}`}
+        onClick={() =>
+          toast({
+            position: "bottom",
+            status: "info",
+            render: () => (
+              <Box
+                color="white"
+                m="50px"
+                p={5}
+                borderRadius="20px"
+                bg={secondaryColor}
+                fontFamily={"inter-bold"}
+                textAlign="center"
+              >
+                Você pode clicar nas legendas do gráfico para manipular os dados
+              </Box>
+            ),
+          })
+        }
+      />
+      <Spacer />
+      <Pie data={chartData} options={options} style={{ padding: "30px" }} />
+      <Spacer />
+    </Flex>
+  );
 };
 
 export default GraficoDesespaTipo;

@@ -53,11 +53,8 @@ const PerfilDeputado = () => {
     xl: true,
   });
 
-  const contentPadding = isLargeScreen
-    ? "20px 20px 20px 20px"
-    : "0px 10px 20px 0px";
   return (
-    <HStack h={"100vh"} w="100vw" alignItems="start">
+    <HStack h={isLargeScreen ? "100vh" : "300vh"} w="100vw" alignItems="start">
       {isLargeScreen ? (
         <SideBar
           isLargeScreen={isLargeScreen}
@@ -96,28 +93,24 @@ const PerfilDeputado = () => {
       )}
 
       {!isLoading && (
-        <Tabs variant="soft-rounded" colorScheme="green" w="100%" h="100%">
-          <TabList justifyContent="center">
-            <Tab>Dados Gerais</Tab>
-            <Tab>Orgãos participantes</Tab>
-          </TabList>
-          <TabPanels w="100%" h="100%">
-            <TabPanel w="100%" h="100%">
-              <Flex w="100%" h="100%" direction="column">
-                {!isLargeScreen && (
-                  <NavBar showDrawerIcon={true} onClick={onOpen} />
-                )}
-                <DadosGerais
-                  contentPadding={contentPadding}
-                  data={data!}
-                  deputadoID={deputadoID}
-                />
-                {/* <Orgaos deputadoID={deputadoID} />
+        <Flex direction={isLargeScreen ? "row" : "column"} w="100%" h="100%">
+          {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
+          <Tabs variant="soft-rounded" colorScheme="green" w="100%" h="100%">
+            <TabList justifyContent="center" mt="20px" mb="20px">
+              <Tab>Dados Gerais</Tab>
+              <Tab>Orgãos participantes</Tab>
+            </TabList>
+            <TabPanels w="100%" h="90%">
+              <TabPanel w="100%" h="100%" p="0px">
+                <Flex w="100%" h="100%" direction="column">
+                  <DadosGerais data={data!} deputadoID={deputadoID} />
+                  {/* <Orgaos deputadoID={deputadoID} />
           <Frentes deputadoID={deputadoID} /> */}
-              </Flex>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
+                </Flex>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Flex>
       )}
     </HStack>
   );
