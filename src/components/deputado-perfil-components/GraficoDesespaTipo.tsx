@@ -7,11 +7,25 @@ import {
   secondaryColor,
 } from "../../custom-theme";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
-import { Box, Flex, IconButton, Spacer, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  IconButton,
+  Spacer,
+  useBreakpointValue,
+  useToast,
+} from "@chakra-ui/react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
 const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
   const toast = useToast();
+  const isLargeScreen = useBreakpointValue({
+    base: false,
+    sm: false,
+    md: false,
+    lg: true,
+    xl: true,
+  });
 
   let tipoDespesas: Map<string, number> = new Map();
   function createChartInfo() {
@@ -88,7 +102,15 @@ const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
     },
   };
   return (
-    <Flex w="100%" h="100%" alignItems="end">
+    <Flex
+      w="100%"
+      h="100%"
+      direction={isLargeScreen ? "row" : "column"}
+      alignItems={isLargeScreen ? "end" : "start"}
+    >
+      <Spacer />
+      <Pie data={chartData} options={options} style={{ padding: "30px" }} />
+      <Spacer />
       <IconButton
         m="10px"
         size="lg"
@@ -116,9 +138,6 @@ const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
           })
         }
       />
-      <Spacer />
-      <Pie data={chartData} options={options} style={{ padding: "30px" }} />
-      <Spacer />
     </Flex>
   );
 };
