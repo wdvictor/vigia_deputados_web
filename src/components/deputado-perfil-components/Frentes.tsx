@@ -1,24 +1,25 @@
 import {
+  Box,
   Accordion,
+  AccordionItem,
   AccordionButton,
   AccordionIcon,
-  AccordionItem,
   AccordionPanel,
-  Badge,
-  Box,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
   Wrap,
+  Card,
+  CardHeader,
+  CardBody,
+  Badge,
+  CardFooter,
 } from "@chakra-ui/react";
-import useDeputadoOrgaos from "../../hooks/useDeputadoOrgaos";
+
+import React from "react";
 import { secondaryColor } from "../../custom-theme";
 import toTitleCase from "../../service/functions-services";
+import useDeputadosFrentes from "../../hooks/useDeputadoFrentes";
 
-const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
-  const { data } = useDeputadoOrgaos(deputadoID);
-
+const Frentes = ({ deputadoID }: { deputadoID: number }) => {
+  const { data } = useDeputadosFrentes(deputadoID);
   return (
     <Box p="20px">
       <Accordion
@@ -29,7 +30,7 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
         <AccordionItem border="none">
           <AccordionButton>
             <Box as="span" flex="1" textAlign="left">
-              Orgãos participantes
+              Frentes parlamentares
             </Box>
             <AccordionIcon />
           </AccordionButton>
@@ -37,22 +38,15 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
           <AccordionPanel>
             <Box w="100%">
               <Wrap>
-                {data?.dados.map((orgao) => (
+                {data?.dados.map((frente) => (
                   <Card
-                    key={`${orgao.idOrgao}${orgao.codTitulo}`}
+                    key={`${frente.id}`}
                     m="20px"
                     backgroundColor={secondaryColor}
                     maxHeight="500px"
                     maxWidth="500px"
                   >
-                    <CardHeader color="white">{orgao.siglaOrgao}</CardHeader>
-                    <CardBody color="white">
-                      <Badge p="2px 5px 2px 5px">{orgao.titulo}</Badge>
-                    </CardBody>
-                    <CardFooter color="white">
-                      {" "}
-                      {toTitleCase(orgao.nomeOrgao)}
-                    </CardFooter>
+                    <CardHeader color="white">{frente.titulo}</CardHeader>
                   </Card>
                 ))}
               </Wrap>
@@ -64,4 +58,4 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
   );
 };
 
-export default Orgaos;
+export default Frentes;

@@ -20,6 +20,7 @@ import NavBar from "../components/NavBar";
 import SideBar from "../components/deputado-perfil-components/SideBar";
 import DadosGerais from "../components/deputado-perfil-components/DadosGerais";
 import Orgaos from "../components/deputado-perfil-components/Orgaos";
+import Frentes from "../components/deputado-perfil-components/Frentes";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -98,6 +99,7 @@ const PerfilDeputado = () => {
             deputadoID={deputadoID}
           />
           <Orgaos deputadoID={deputadoID} />
+          <Frentes deputadoID={deputadoID} />
         </Flex>
       )}
     </HStack>

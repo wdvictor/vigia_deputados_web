@@ -22,7 +22,7 @@ const DadosGerais = ({ data, contentPadding, deputadoID }: Props) => {
   return (
     <Flex
       w="100%"
-      h={isLargeScreen ? "35%" : "150%"}
+      h={isLargeScreen ? "30%" : "150%"}
       p={contentPadding}
       direction={isLargeScreen ? "row" : "column"}
       overflow="hidden"
