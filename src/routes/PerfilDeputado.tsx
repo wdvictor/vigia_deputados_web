@@ -7,6 +7,7 @@ import {
   Flex,
   HStack,
   Spinner,
+  Wrap,
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
@@ -29,6 +30,8 @@ interface LoaderData {
 }
 
 const PerfilDeputado = () => {
+  window.scrollTo(0, 0);
+
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const paramsData = useLoaderData();
@@ -47,7 +50,7 @@ const PerfilDeputado = () => {
     ? "20px 20px 20px 20px"
     : "0px 10px 20px 0px";
   return (
-    <HStack h={isLargeScreen ? "200vh" : "150vh"} w="100vw" alignItems="start">
+    <HStack h={"250vh"} w="100vw" alignItems="start">
       {isLargeScreen ? (
         <SideBar
           isLargeScreen={isLargeScreen}
@@ -92,9 +95,8 @@ const PerfilDeputado = () => {
             contentPadding={contentPadding}
             data={data!}
             deputadoID={deputadoID}
-            isLargeScreen
           />
-          <Flex justifyContent="space-around" w="100%"></Flex>
+          <Wrap justifyContent="space-around" w="100%"></Wrap>
         </Flex>
       )}
     </HStack>
