@@ -21,11 +21,11 @@ import { Params, useLoaderData } from "react-router-dom";
 
 import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
 
-import NavBar from "../components/NavBar";
-import SideBar from "../components/deputado-perfil-components/SideBar";
-import DadosGerais from "../components/deputado-perfil-components/DadosGerais";
-import Orgaos from "../components/deputado-perfil-components/Orgaos";
-import Frentes from "../components/deputado-perfil-components/Frentes";
+import NavBar from "./NavBar";
+import SideBar from "./deputado-perfil-components/SideBar";
+import DadosGerais from "./deputado-perfil-components/DadosGerais";
+import Orgaos from "./deputado-perfil-components/Orgaos";
+import Frentes from "./deputado-perfil-components/Frentes";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);

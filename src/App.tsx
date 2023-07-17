@@ -3,12 +3,12 @@ import NavBar from "./components/NavBar";
 
 import { spanishGreen } from "./custom-theme";
 
-import Paginacao from "./components/home-page-components/Paginacao";
-import DeputadoCard from "./components/home-page-components/deputados/DeputadoCard";
-import DeputadoContainer from "./components/home-page-components/deputados/DeputadoContainer";
-import DeputadosSkeleton from "./components/home-page-components/deputados/DeputadosSkeleton";
 import { useState } from "react";
 import useDeputados from "./hooks/UseDeputados";
+import DeputadoCard from "./components/home-page-components/DeputadoCard";
+import DeputadoContainer from "./components/home-page-components/DeputadoContainer";
+import DeputadosSkeleton from "./components/home-page-components/DeputadosSkeleton";
+import Paginacao from "./components/home-page-components/Paginacao";
 
 function App() {
   const [pagina, setPagina] = useState(1);

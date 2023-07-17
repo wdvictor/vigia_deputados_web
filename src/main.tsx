@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./App.css";
-import PerfilDeputado, { loader } from "./routes/PerfilDeputado";
+import PerfilDeputado, { loader } from "./components/PerfilDeputado.tsx";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import theme from "./theme.ts";
 const router = createBrowserRouter([
