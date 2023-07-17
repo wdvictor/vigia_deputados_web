@@ -99,14 +99,20 @@ const PerfilDeputado = () => {
             <TabList justifyContent="center" mt="20px" mb="20px">
               <Tab>Dados Gerais</Tab>
               <Tab>Orgãos participantes</Tab>
+              <Tab>Frentes</Tab>
             </TabList>
             <TabPanels w="100%" h="90%">
               <TabPanel w="100%" h="100%" p="0px">
                 <Flex w="100%" h="100%" direction="column">
                   <DadosGerais data={data!} deputadoID={deputadoID} />
-                  {/* <Orgaos deputadoID={deputadoID} />
-          <Frentes deputadoID={deputadoID} /> */}
                 </Flex>
+              </TabPanel>
+              <TabPanel>
+                <Orgaos deputadoID={deputadoID} />
+              </TabPanel>
+              <TabPanel>
+                {" "}
+                <Frentes deputadoID={deputadoID} />
               </TabPanel>
             </TabPanels>
           </Tabs>

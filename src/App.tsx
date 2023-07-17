@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 
 import { spanishGreen } from "./custom-theme";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useDeputados from "./hooks/UseDeputados";
 import DeputadoCard from "./components/home-page-components/DeputadoCard";
 import DeputadoContainer from "./components/home-page-components/DeputadoContainer";
@@ -11,9 +11,16 @@ import DeputadosSkeleton from "./components/home-page-components/DeputadosSkelet
 import Paginacao from "./components/home-page-components/Paginacao";
 
 function App() {
-  const [pagina, setPagina] = useState(1);
+  const [pagina, setPagina] = useState<number>(
+    Number(sessionStorage.getItem("pagina")) || 1
+  );
   const { data, isLoading, error } = useDeputados(pagina);
   const skeletons = [1, 2, 3, 4, 5, 6];
+
+  useEffect(() => {
+    sessionStorage.setItem("pagina", String(pagina));
+  }, [pagina]);
+
   if (error) return <div className="error-message text-danger">{error}</div>;
   return (
     <>
@@ -21,7 +28,7 @@ function App() {
         <NavBar></NavBar>
         <SimpleGrid
           padding="1%"
-          columns={{ sm: 1, md: 2, lg: 3, xl: 3, "2xl": 4 }}
+          columns={{ sm: 1, md: 2, lg: 3, xl: 3, "2xl": 3 }}
           spacing="10"
         >
           {isLoading &&
