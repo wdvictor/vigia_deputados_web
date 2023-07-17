@@ -19,6 +19,7 @@ import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
 import NavBar from "../components/NavBar";
 import SideBar from "../components/deputado-perfil-components/SideBar";
 import DadosGerais from "../components/deputado-perfil-components/DadosGerais";
+import Orgaos from "../components/deputado-perfil-components/Orgaos";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -50,7 +51,7 @@ const PerfilDeputado = () => {
     ? "20px 20px 20px 20px"
     : "0px 10px 20px 0px";
   return (
-    <HStack h={"250vh"} w="100vw" alignItems="start">
+    <HStack h={"300vh"} w="100vw" alignItems="start">
       {isLargeScreen ? (
         <SideBar
           isLargeScreen={isLargeScreen}
@@ -96,7 +97,7 @@ const PerfilDeputado = () => {
             data={data!}
             deputadoID={deputadoID}
           />
-          <Wrap justifyContent="space-around" w="100%"></Wrap>
+          <Orgaos deputadoID={deputadoID} />
         </Flex>
       )}
     </HStack>
