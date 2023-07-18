@@ -36,7 +36,6 @@ const PerfilDeputadoMobile = ({ data }: { data: DeputadoPerfilResponse }) => {
     return urlRedeList[0];
   }
 
-  console.log(data.dados.redeSocial);
   return (
     <VStack h="100vh" w="100vw" spacing="0">
       <Box flex={1} w="100%" bg={secondaryColor}>
