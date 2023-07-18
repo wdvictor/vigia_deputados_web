@@ -1,4 +1,4 @@
-import { SimpleGrid, VStack } from "@chakra-ui/react";
+import { SimpleGrid, VStack, Box } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 
 import { spanishGreen } from "./custom-theme";
@@ -23,11 +23,11 @@ function App() {
 
   if (error) return <div className="error-message text-danger">{error}</div>;
   return (
-    <>
+    <Box w="100%" m="0px" p="0px">
       <VStack backgroundColor={`${spanishGreen}`} h="100%">
         <NavBar></NavBar>
         <SimpleGrid
-          padding="1%"
+          padding="10px"
           columns={{ sm: 1, md: 2, lg: 3, xl: 3, "2xl": 3 }}
           spacing="10"
         >
@@ -50,7 +50,7 @@ function App() {
           onNext={() => setPagina(pagina + 1)}
         />
       </VStack>
-    </>
+    </Box>
   );
 }
 

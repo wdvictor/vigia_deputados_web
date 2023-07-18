@@ -24,7 +24,6 @@ const DeputadoCard = ({ deputado }: Props) => {
       <Card
         border={`1px solid ${secondaryColor}`}
         backgroundColor="transparent"
-        display="flex"
         flexDirection="row"
         alignItems="center"
         overflow="hidden"

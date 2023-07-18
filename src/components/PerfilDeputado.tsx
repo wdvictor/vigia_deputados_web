@@ -12,7 +12,6 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Wrap,
   useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
