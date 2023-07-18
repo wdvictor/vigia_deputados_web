@@ -1,10 +1,17 @@
-import { Wrap, Card, CardHeader } from "@chakra-ui/react";
+import { Wrap, Card, CardHeader, useBreakpointValue } from "@chakra-ui/react";
 
 import { secondaryColor } from "../../custom-theme";
 
 import useDeputadosFrentes from "../../hooks/useDeputadoFrentes";
 
 const Frentes = ({ deputadoID }: { deputadoID: number }) => {
+  const isLargeScreen = useBreakpointValue({
+    base: false,
+    sm: false,
+    md: false,
+    lg: true,
+    xl: true,
+  });
   const { data } = useDeputadosFrentes(deputadoID);
   return (
     <Wrap spacing="5">
@@ -12,7 +19,7 @@ const Frentes = ({ deputadoID }: { deputadoID: number }) => {
         <Card
           key={`${frente.id}`}
           backgroundColor={secondaryColor}
-          maxWidth="45%"
+          maxWidth={isLargeScreen ? "45%" : "100%"}
         >
           <CardHeader color="white">{frente.titulo}</CardHeader>
         </Card>

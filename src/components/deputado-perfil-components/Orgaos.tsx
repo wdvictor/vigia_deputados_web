@@ -8,12 +8,20 @@ import {
   Spacer,
   Text,
   Wrap,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import useDeputadoOrgaos from "../../hooks/useDeputadoOrgaos";
 import { secondaryColor } from "../../custom-theme";
 
 const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
   const { data } = useDeputadoOrgaos(deputadoID);
+  const isLargeScreen = useBreakpointValue({
+    base: false,
+    sm: false,
+    md: false,
+    lg: true,
+    xl: true,
+  });
 
   function formatDate(date: string | undefined): string {
     if (date) {
@@ -29,7 +37,7 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
         <Card
           key={`${orgao.idOrgao}${orgao.codTitulo}`}
           backgroundColor={secondaryColor}
-          maxW="45%"
+          maxW={isLargeScreen ? "45%" : "100%"}
         >
           <CardHeader color="white">
             <HStack>

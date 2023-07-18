@@ -94,7 +94,13 @@ const PerfilDeputado = () => {
       {!isLoading && (
         <Flex direction={isLargeScreen ? "row" : "column"} w="100%" h="100%">
           {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
-          <Tabs variant="soft-rounded" colorScheme="green" w="100%" h="100%">
+          <Tabs
+            isFitted
+            variant="enclosed"
+            colorScheme="green"
+            w="100%"
+            h="100%"
+          >
             <TabList justifyContent="center" mt="20px" mb="20px">
               <Tab>Dados Gerais</Tab>
               <Tab>Orgãos participantes</Tab>

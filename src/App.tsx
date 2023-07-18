@@ -1,14 +1,18 @@
 import { SimpleGrid, VStack, Box } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-
 import { spanishGreen } from "./custom-theme";
-
 import { useEffect, useState } from "react";
 import useDeputados from "./hooks/UseDeputados";
 import DeputadoCard from "./components/home-page-components/DeputadoCard";
 import DeputadoContainer from "./components/home-page-components/DeputadoContainer";
 import DeputadosSkeleton from "./components/home-page-components/DeputadosSkeleton";
 import Paginacao from "./components/home-page-components/Paginacao";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import firebaseConfig from "../firebase-config.json";
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 function App() {
   const [pagina, setPagina] = useState<number>(
