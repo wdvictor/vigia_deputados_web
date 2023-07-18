@@ -1,10 +1,4 @@
-import {
-  Box,
-  Flex,
-  Spacer,
-  useBreakpointValue,
-  useToast,
-} from "@chakra-ui/react";
+import { Flex, Spacer, useBreakpointValue } from "@chakra-ui/react";
 import DadosEleitorais from "./DadosEleitorais";
 import DadosPessoaisContainer from "./DadosPessoaisContainer";
 import DeputadoDespesasContainer from "./DeputadoDespesasContainer";

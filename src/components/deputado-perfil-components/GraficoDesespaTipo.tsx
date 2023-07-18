@@ -8,7 +8,6 @@ import {
 } from "../../custom-theme";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
 import {
-  Box,
   Flex,
   IconButton,
   Spacer,

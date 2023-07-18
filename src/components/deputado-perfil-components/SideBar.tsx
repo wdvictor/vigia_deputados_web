@@ -8,7 +8,7 @@ import {
   VStack,
   Text,
 } from "@chakra-ui/react";
-import React from "react";
+
 import { secondaryColor } from "../../custom-theme";
 import { BsTwitter, BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
 import { IconType } from "react-icons";

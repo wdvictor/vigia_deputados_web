@@ -6,7 +6,6 @@ import {
   Spinner,
   VStack,
   useBreakpointValue,
-  useToast,
 } from "@chakra-ui/react";
 
 import { secondaryColor } from "../../custom-theme";

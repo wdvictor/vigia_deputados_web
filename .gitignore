@@ -1,3 +1,7 @@
+firebase-config.json
+database.rules.json
+.firebase/
+
 # Logs
 logs
 *.log
@@ -22,3 +26,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
