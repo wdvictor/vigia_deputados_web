@@ -122,19 +122,8 @@ const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
           toast({
             position: "bottom",
             status: "info",
-            render: () => (
-              <Box
-                color="white"
-                m="50px"
-                p={5}
-                borderRadius="20px"
-                bg={secondaryColor}
-                fontFamily={"inter-bold"}
-                textAlign="center"
-              >
-                Você pode clicar nas legendas do gráfico para manipular os dados
-              </Box>
-            ),
+            title:
+              "Você pode clicar nas legendas do gráfico para manipular os dados",
           })
         }
       />

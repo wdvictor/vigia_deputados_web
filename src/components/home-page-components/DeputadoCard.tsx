@@ -11,7 +11,7 @@ import {
 
 import { Link } from "react-router-dom";
 import { Dado } from "../../hooks/UseDeputados";
-import { secondaryColor } from "../../custom-theme";
+import { secondaryColor, woodrush } from "../../custom-theme";
 import toTitleCase from "../../service/functions-services";
 
 interface Props {
@@ -38,7 +38,14 @@ const DeputadoCard = ({ deputado }: Props) => {
 
           <Text color={secondaryColor}>{deputado.siglaPartido}</Text>
 
-          <Badge>{deputado.siglaUf}</Badge>
+          <Badge
+            bg={woodrush}
+            color="white"
+            borderRadius="10px"
+            p="2px 10px 2px 10px"
+          >
+            {deputado.siglaUf}
+          </Badge>
         </CardBody>
       </Card>
       <Link to={`/perfil-deputado/${deputado.id}`}>
