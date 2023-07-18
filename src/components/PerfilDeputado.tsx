@@ -110,7 +110,6 @@ const PerfilDeputado = () => {
                 <Orgaos deputadoID={deputadoID} />
               </TabPanel>
               <TabPanel>
-                {" "}
                 <Frentes deputadoID={deputadoID} />
               </TabPanel>
             </TabPanels>

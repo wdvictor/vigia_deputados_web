@@ -1,11 +1,5 @@
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Badge,
-  Box,
   Card,
   CardBody,
   CardFooter,

@@ -1,34 +1,18 @@
-import {
-  Box,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-  Wrap,
-  Card,
-  CardHeader,
-  CardBody,
-  Badge,
-  CardFooter,
-} from "@chakra-ui/react";
+import { Wrap, Card, CardHeader } from "@chakra-ui/react";
 
-import React from "react";
 import { secondaryColor } from "../../custom-theme";
-import toTitleCase from "../../service/functions-services";
+
 import useDeputadosFrentes from "../../hooks/useDeputadoFrentes";
 
 const Frentes = ({ deputadoID }: { deputadoID: number }) => {
   const { data } = useDeputadosFrentes(deputadoID);
   return (
-    <Wrap>
+    <Wrap spacing="5">
       {data?.dados.map((frente) => (
         <Card
           key={`${frente.id}`}
-          m="20px"
           backgroundColor={secondaryColor}
-          maxHeight="500px"
-          maxWidth="500px"
+          maxWidth="45%"
         >
           <CardHeader color="white">{frente.titulo}</CardHeader>
         </Card>
