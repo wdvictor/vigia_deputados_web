@@ -7,8 +7,15 @@ import DeputadoCard from "./components/home-page-components/DeputadoCard";
 import DeputadoContainer from "./components/home-page-components/DeputadoContainer";
 import DeputadosSkeleton from "./components/home-page-components/DeputadosSkeleton";
 import Paginacao from "./components/home-page-components/Paginacao";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import firebaseConfig from "../firebase-config.json";
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 function App() {
+  analytics.app.automaticDataCollectionEnabled = true;
   const [pagina, setPagina] = useState<number>(
     Number(sessionStorage.getItem("pagina")) || 1
   );

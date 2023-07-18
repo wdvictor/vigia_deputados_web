@@ -25,6 +25,7 @@ import SideBar from "./deputado-perfil-components/SideBar";
 import DadosGerais from "./deputado-perfil-components/DadosGerais";
 import Orgaos from "./deputado-perfil-components/Orgaos";
 import Frentes from "./deputado-perfil-components/Frentes";
+import PerfilDeputadoMobile from "./deputado-perfil-components/mobile/PerfilDeputadoMobile";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -51,6 +52,10 @@ const PerfilDeputado = () => {
     lg: true,
     xl: true,
   });
+
+  if (!isLargeScreen && data) {
+    return <PerfilDeputadoMobile data={data} />;
+  }
 
   return (
     <HStack h={isLargeScreen ? "100vh" : "300vh"} w="100vw" alignItems="start">
