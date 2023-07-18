@@ -7,6 +7,9 @@ import "./App.css";
 import PerfilDeputado, { loader } from "./components/PerfilDeputado.tsx";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import theme from "./theme.ts";
+import DadosGeraisMobile, {
+  dadosGeraisLoader,
+} from "./components/deputado-perfil-components/mobile/DadosGeraisMobile.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +20,12 @@ const router = createBrowserRouter([
     element: <PerfilDeputado />,
 
     loader: loader,
+  },
+  {
+    path: "/perfil-deputado/:deputadoID/dados-gerais",
+    element: <DadosGeraisMobile />,
+
+    loader: dadosGeraisLoader,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(

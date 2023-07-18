@@ -5,11 +5,9 @@ import {
   Box,
   Text,
   Badge,
-  Link,
   Icon,
-  Button,
+  Link as ChakraLink,
   Spacer,
-  HStack,
   Flex,
 } from "@chakra-ui/react";
 
@@ -19,6 +17,7 @@ import { IconType } from "react-icons";
 import { BsTwitter, BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
 import { SlArrowLeft } from "react-icons/sl";
 import MenuButton from "./MenuButton";
+import { Link } from "react-router-dom";
 
 const PerfilDeputadoMobile = ({ data }: { data: DeputadoPerfilResponse }) => {
   const IconMap: { [key: string]: IconType } = {
@@ -30,15 +29,20 @@ const PerfilDeputadoMobile = ({ data }: { data: DeputadoPerfilResponse }) => {
 
   function getRede(urlRede: string): string {
     let rede = urlRede.replace("https://", "");
+    rede = urlRede.replace("http://", "");
     rede = rede.replace("www.", "");
     let urlRedeList: string[] = rede.split(".");
 
     return urlRedeList[0];
   }
+
+  console.log(data.dados.redeSocial);
   return (
     <VStack h="100vh" w="100vw" spacing="0">
       <Box flex={1} w="100%" bg={secondaryColor}>
-        <Icon as={SlArrowLeft} color="white" boxSize="25px" m="20px" />
+        <Link to="/">
+          <Icon as={SlArrowLeft} color="white" boxSize="25px" m="20px" />
+        </Link>
       </Box>
       <Box flex={2} h="100%" w="100%" bg="white"></Box>
       <Box
@@ -69,26 +73,26 @@ const PerfilDeputadoMobile = ({ data }: { data: DeputadoPerfilResponse }) => {
         <Center>
           {data.dados.redeSocial.map((r) => (
             <Box key={r} p="20px">
-              <Link href={r} target="_blank" rel="noopener noreferrer">
+              <ChakraLink href={r} target="_blank" rel="noopener noreferrer">
                 <Icon
                   color={secondaryColor}
                   as={IconMap[getRede(r)]}
                   boxSize="25px"
                 />
-              </Link>
+              </ChakraLink>
             </Box>
           ))}
         </Center>
+        {data.dados.redeSocial && <Box mt="100px"></Box>}
         <Flex direction="column" justifyContent="space-evenly" h="40%">
           <MenuButton
             title="Dados Gerais"
-            onClick={() => {
-              ("");
-            }}
+            path={`/perfil-deputado/${data.dados.id}/dados-gerais`}
           />
-          <MenuButton title="Despesas" onClick={() => {}} />
+
+          {/* <MenuButton title="Despesas" onClick={() => {}} />
           <MenuButton title="Orgãos participantes" onClick={() => {}} />
-          <MenuButton title="Frentes" onClick={() => {}} />
+          <MenuButton title="Frentes" onClick={() => {}} /> */}
         </Flex>
 
         <Spacer />
