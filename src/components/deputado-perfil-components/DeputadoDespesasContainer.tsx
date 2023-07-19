@@ -36,7 +36,7 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
   );
 
   return (
-    <Box flex={2} h="45%" w="100%" p="20px">
+    <Box h="50%" w="100%" p="20px">
       <HStack alignItems="center" h="100%">
         <Box
           flex={1}

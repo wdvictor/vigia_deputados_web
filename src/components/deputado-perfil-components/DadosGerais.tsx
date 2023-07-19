@@ -13,7 +13,7 @@ interface Props {
 
 const DadosGerais = ({ data, deputadoID }: Props) => {
   return (
-    <VStack overflow="hidden" h="100%" w="100%">
+    <VStack overflow="hidden" h="100%" w="100%" m="10px">
       <Box w="100%">
         <Flex
           direction={"row"}
