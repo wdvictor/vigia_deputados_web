@@ -1,4 +1,5 @@
-import { Pie } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+
 import {
   mineralGreen,
   bitter,
@@ -7,25 +8,12 @@ import {
   secondaryColor,
 } from "../../custom-theme";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
-import {
-  Flex,
-  IconButton,
-  Spacer,
-  useBreakpointValue,
-  useToast,
-} from "@chakra-ui/react";
-import { AiOutlineInfoCircle } from "react-icons/ai";
+
+import { Pie } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
-  const toast = useToast();
-  const isLargeScreen = useBreakpointValue({
-    base: false,
-    sm: false,
-    md: false,
-    lg: true,
-    xl: true,
-  });
-
   let tipoDespesas: Map<string, number> = new Map();
   function createChartInfo() {
     if (data?.dados) {
@@ -100,34 +88,7 @@ const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
       },
     },
   };
-  return (
-    <Flex
-      w="100%"
-      h="100%"
-      direction={isLargeScreen ? "row" : "column"}
-      alignItems={isLargeScreen ? "end" : "start"}
-    >
-      <Spacer />
-      <Pie data={chartData} options={options} style={{ padding: "30px" }} />
-      <Spacer />
-      <IconButton
-        m="10px"
-        size="lg"
-        icon={<AiOutlineInfoCircle />}
-        aria-label="copy-icon"
-        color={secondaryColor}
-        border={`1px solid ${secondaryColor}`}
-        onClick={() =>
-          toast({
-            position: "bottom",
-            status: "info",
-            title:
-              "Você pode clicar nas legendas do gráfico para manipular os dados",
-          })
-        }
-      />
-    </Flex>
-  );
+  return <Pie data={chartData} options={options} id="1" />;
 };
 
 export default GraficoDesespaTipo;

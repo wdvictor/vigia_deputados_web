@@ -23,11 +23,13 @@ const DadosPessoaisContainer = ({
   }
 
   return (
-    <Box flex={2} h="100%">
-      <Heading size="md">Dados Pessoais</Heading>
+    <Box>
+      <Heading size="md" fontFamily="inter-bold" color="gray">
+        Dados Pessoais
+      </Heading>
       <Divider />
-      <HStack h="100%" gap={5}>
-        <Box flex={1} h="100%">
+      <HStack h="100%" gap={5} align="start">
+        <Box flex={1}>
           <VStack>
             <InfoField
               title="Nome Civíl"

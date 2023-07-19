@@ -58,7 +58,12 @@ const PerfilDeputado = () => {
   }
 
   return (
-    <HStack h={isLargeScreen ? "100vh" : "300vh"} w="100vw" alignItems="start">
+    <HStack
+      h={isLargeScreen ? "100vh" : "300vh"}
+      w="100vw"
+      alignItems="start"
+      gap={0}
+    >
       {isLargeScreen ? (
         <SideBar
           isLargeScreen={isLargeScreen}
@@ -99,16 +104,16 @@ const PerfilDeputado = () => {
       {!isLoading && (
         <Flex direction={isLargeScreen ? "row" : "column"} w="100%" h="100%">
           {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
-          <Tabs variant="soft-rounded" colorScheme="gray" w="100%" h="100%">
-            <TabList justifyContent="center" h="8%" p="10px">
+          <Tabs variant="soft-rounded" colorScheme="green" w="100%" h="100%">
+            <TabList justifyContent="center" h="5%" p="5px">
               <Tab>Dados Gerais</Tab>
               <Tab>Orgãos participantes</Tab>
               <Tab>Frentes</Tab>
             </TabList>
-            <TabPanels w="100%" h="92%">
+            <TabPanels w="100%" h="95%">
               <TabPanel w="100%" h="100%" p="0px">
                 <Flex w="100%" h="100%" direction="column">
-                  <DadosGerais data={data!} deputadoID={deputadoID} />
+                  <DadosGerais perfilData={data!} />
                 </Flex>
               </TabPanel>
               <TabPanel>

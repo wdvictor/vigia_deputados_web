@@ -28,10 +28,12 @@ const GabineteContainer = ({
     }
   };
   return (
-    <Box flex={1}>
-      <Heading size="md">Gabiente</Heading>
+    <Box>
+      <Heading size="md" fontFamily="inter-bold" color="gray">
+        Gabiente
+      </Heading>
       <Divider />
-      <HStack h="100%" gap={5}>
+      <HStack h="100%" gap={5} align="start">
         <Box flex={1} h="100%">
           <VStack>
             <InfoField title="Gabinete" data={gabinete?.sala} />
@@ -47,7 +49,7 @@ const GabineteContainer = ({
         </Box>
       </HStack>
       <Flex direction="column" w="100%">
-        <Box flex={1} fontFamily="inter-bold">
+        <Box flex={1} fontFamily="inter-medium" color="gray" fontSize="1vw">
           E-mail
         </Box>
         <Box
@@ -57,10 +59,11 @@ const GabineteContainer = ({
           borderRadius="10px"
           p="10px"
           mt="10px"
-          fontSize="1vw"
         >
           <HStack>
-            <Text m="0px">{gabinete?.email}</Text>
+            <Text m="0px" fontSize="1vw">
+              {gabinete?.email}
+            </Text>
             <Spacer />
             <IconButton
               bg="transparent"

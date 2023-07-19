@@ -1,37 +1,40 @@
-import { Box, Flex, Spacer, VStack } from "@chakra-ui/react";
+import { Box, HStack, VStack } from "@chakra-ui/react";
 import DadosEleitorais from "./DadosEleitorais";
 import DadosPessoaisContainer from "./DadosPessoaisContainer";
-import DeputadoDespesasContainer from "./DeputadoDespesasContainer";
 import GabineteContainer from "./Gabinete";
 import { DeputadoPerfilResponse } from "../../hooks/useDeputadosPerfil";
 
 interface Props {
-  data: DeputadoPerfilResponse;
-
-  deputadoID: number;
+  perfilData: DeputadoPerfilResponse;
 }
 
-const DadosGerais = ({ data, deputadoID }: Props) => {
+const DadosGerais = ({ perfilData }: Props) => {
+  console.log(perfilData);
   return (
-    <VStack overflow="hidden" h="100%" w="100%" m="10px">
-      <Box w="100%">
-        <Flex
-          direction={"row"}
-          gap={5}
-          h="100%"
-          w="100%"
-          alignItems="center"
-          justifyContent="space-evenly"
-          p="20px"
-        >
-          <DadosPessoaisContainer data={data} />
-          <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
-          <DadosEleitorais data={data!} />
-        </Flex>
-      </Box>
-
-      <DeputadoDespesasContainer deputadoID={deputadoID} />
-    </VStack>
+    <Box m="25px">
+      <VStack gap={10}>
+        <Box flex={1} h="100%" w="100%">
+          <HStack gap={10} align="start">
+            <Box flex={1} h="100%" w="100%">
+              <DadosPessoaisContainer data={perfilData} />
+            </Box>
+            <Box flex={1} h="100%" w="100%">
+              <DadosEleitorais data={perfilData!} />
+            </Box>
+          </HStack>
+        </Box>
+        <Box flex={1} h="100%" w="100%">
+          <HStack gap={10}>
+            <Box flex={1} h="100%" w="100%">
+              <GabineteContainer
+                gabinete={perfilData?.dados.ultimoStatus.gabinete}
+              />
+            </Box>
+            <Box flex={1}></Box>
+          </HStack>
+        </Box>
+      </VStack>
+    </Box>
   );
 };
 

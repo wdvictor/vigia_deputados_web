@@ -1,4 +1,4 @@
-import { Flex, Box } from "@chakra-ui/react";
+import { Flex, Box, useBreakpoint, useBreakpointValue } from "@chakra-ui/react";
 import { whiteLilac } from "../../custom-theme";
 
 interface Props {
@@ -8,8 +8,8 @@ interface Props {
 
 const InfoField = ({ title, data }: Props) => {
   return (
-    <Flex direction="column" w="100%">
-      <Box flex={1} fontFamily="inter-bold" fontSize="1.1vw">
+    <Flex direction="column" w="100%" mb="5px">
+      <Box flex={1} fontFamily="inter-medium" fontSize="1.1vw" color="gray">
         {title}
       </Box>
       <Box
@@ -17,9 +17,9 @@ const InfoField = ({ title, data }: Props) => {
         fontSize="1vw"
         fontFamily="inter-light"
         bg={whiteLilac}
-        p="10px"
-        mt="10px"
-        borderRadius="10px"
+        p="5px 0px 5px 10px"
+        mt="5px"
+        borderRadius="5px"
       >
         {data ? data : "-"}
       </Box>

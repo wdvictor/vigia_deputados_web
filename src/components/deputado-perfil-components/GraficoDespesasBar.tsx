@@ -9,7 +9,8 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
-import { primaryColor } from "../../custom-theme";
+import { primaryColor, whiteLilac } from "../../custom-theme";
+import { Box } from "@chakra-ui/react";
 
 ChartJS.register(
   CategoryScale,
@@ -80,7 +81,11 @@ const GraficoDespesasBar = ({ data }: { data: DeputadoDespesaResponse }) => {
       },
     ],
   };
-  return <Bar data={chartInfo} options={options} />;
+  return (
+    <Box w="100%" h="100%" p="10px" borderRadius="10px">
+      <Bar data={chartInfo} options={options} id="0" />
+    </Box>
+  );
 };
 
 export default GraficoDespesasBar;
