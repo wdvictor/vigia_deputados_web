@@ -1,6 +1,5 @@
 import {
   Box,
-  Center,
   Divider,
   Flex,
   Heading,
@@ -10,7 +9,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { secondaryColor, whiteLilac } from "../../custom-theme";
+import { whiteLilac } from "../../custom-theme";
 import { Gabinete } from "../../hooks/useDeputadosPerfil";
 
 import { BiPaste } from "react-icons/bi";
@@ -57,6 +56,7 @@ const GabineteContainer = ({
           bg={whiteLilac}
           p="10px"
           mt="10px"
+          fontSize="1vw"
         >
           <HStack>
             <Text m="0px">{gabinete?.email}</Text>
@@ -65,7 +65,7 @@ const GabineteContainer = ({
               bg="transparent"
               border="1px solid gray"
               icon={<BiPaste />}
-              size="md"
+              size="sm"
               aria-label="copy-icon"
               onClick={() =>
                 copyToClipboard(gabinete?.email ? gabinete.email : "")

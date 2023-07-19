@@ -1,4 +1,4 @@
-import { Box, Flex, Spacer, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, Spacer } from "@chakra-ui/react";
 import DadosEleitorais from "./DadosEleitorais";
 import DadosPessoaisContainer from "./DadosPessoaisContainer";
 import DeputadoDespesasContainer from "./DeputadoDespesasContainer";
@@ -12,13 +12,6 @@ interface Props {
 }
 
 const DadosGerais = ({ data, deputadoID }: Props) => {
-  const isLargeScreen = useBreakpointValue({
-    base: false,
-    sm: false,
-    md: true,
-    lg: true,
-    xl: true,
-  });
   return (
     <Flex w="100%" h="100%" direction="column" overflow="hidden" gap="5">
       <Flex
