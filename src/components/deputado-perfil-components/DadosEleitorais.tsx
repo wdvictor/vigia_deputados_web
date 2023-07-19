@@ -1,7 +1,7 @@
 import { Center, Heading, VStack, Box } from "@chakra-ui/react";
 
 import { secondaryColor } from "../../custom-theme";
-import InfoRow from "./InfoRow";
+import InfoRow from "./InfoField";
 import { DeputadoPerfilResponse } from "../../hooks/useDeputadosPerfil";
 
 const DadosEleitorais = ({ data }: { data: DeputadoPerfilResponse }) => {

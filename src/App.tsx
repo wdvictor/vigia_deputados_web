@@ -11,11 +11,11 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import firebaseConfig from "../firebase-config.json";
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);
 
 function App() {
-  analytics.app.automaticDataCollectionEnabled = true;
+  //analytics.app.automaticDataCollectionEnabled = true;
   const [pagina, setPagina] = useState<number>(
     Number(sessionStorage.getItem("pagina")) || 1
   );

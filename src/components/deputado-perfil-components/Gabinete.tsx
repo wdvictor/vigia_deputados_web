@@ -1,6 +1,8 @@
 import {
   Box,
   Center,
+  Divider,
+  Flex,
   Heading,
   HStack,
   IconButton,
@@ -8,11 +10,11 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { secondaryColor } from "../../custom-theme";
+import { secondaryColor, whiteLilac } from "../../custom-theme";
 import { Gabinete } from "../../hooks/useDeputadosPerfil";
 
 import { BiPaste } from "react-icons/bi";
-import InfoRow from "./InfoRow";
+import InfoField from "./InfoField";
 const GabineteContainer = ({
   gabinete,
 }: {
@@ -27,43 +29,51 @@ const GabineteContainer = ({
     }
   };
   return (
-    <Box
-      h="350px"
-      w="350px"
-      border={`2px solid ${secondaryColor}`}
-      borderRadius="15px"
-      textColor="black"
-      p="20px"
-    >
-      <Center mb="20px">
-        <Heading size="md">Gabiente</Heading>
-      </Center>
-      <VStack h="70%" justifyContent="space-around">
-        <HStack w="100%">
-          <InfoRow title="Gabinete" data={gabinete?.sala} />
-          <InfoRow title="Anexo" data={gabinete?.predio} />
-        </HStack>
+    <Box flex={1}>
+      <Heading size="md">Gabiente</Heading>
+      <Divider />
+      <HStack h="100%" gap={5}>
+        <Box flex={1} h="100%">
+          <VStack>
+            <InfoField title="Gabinete" data={gabinete?.sala} />
 
-        <InfoRow title="Andar" data={gabinete?.andar} />
-
-        <InfoRow title="Telefone" data={`(61) ${gabinete?.telefone}`} />
-        <Spacer />
-        <HStack>
-          <Text m="0px" color="gray">
-            {gabinete?.email}
-          </Text>
-          <IconButton
-            icon={<BiPaste />}
-            size="lg"
-            aria-label="copy-icon"
-            color={secondaryColor}
-            border={`1px solid ${secondaryColor}`}
-            onClick={() =>
-              copyToClipboard(gabinete?.email ? gabinete.email : "")
-            }
-          />
-        </HStack>
-      </VStack>
+            <InfoField title="Andar" data={gabinete?.andar} />
+          </VStack>
+        </Box>
+        <Box flex={1} h="100%">
+          <VStack>
+            <InfoField title="Anexo" data={gabinete?.predio} />
+            <InfoField title="Telefone" data={`(61) ${gabinete?.telefone}`} />
+          </VStack>
+        </Box>
+      </HStack>
+      <Flex direction="column" w="100%">
+        <Box flex={1} fontFamily="inter-bold">
+          E-mail
+        </Box>
+        <Box
+          flex={1}
+          fontFamily="inter-light"
+          bg={whiteLilac}
+          p="10px"
+          mt="10px"
+        >
+          <HStack>
+            <Text m="0px">{gabinete?.email}</Text>
+            <Spacer />
+            <IconButton
+              bg="transparent"
+              border="1px solid gray"
+              icon={<BiPaste />}
+              size="md"
+              aria-label="copy-icon"
+              onClick={() =>
+                copyToClipboard(gabinete?.email ? gabinete.email : "")
+              }
+            />
+          </HStack>
+        </Box>
+      </Flex>
     </Box>
   );
 };

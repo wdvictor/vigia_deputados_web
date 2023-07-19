@@ -7,3 +7,4 @@ export const mineralGreen: string = '#4AB0D9';
 export const spanishGreen: string = '#E4FFE0';
 export const woodrush: string = '#352B10';
 export const bitter: string = '#8D9179';
+export const whiteLilac: string = '#EEEEFA';

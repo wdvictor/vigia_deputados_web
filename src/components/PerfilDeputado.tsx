@@ -106,12 +106,12 @@ const PerfilDeputado = () => {
             w="100%"
             h="100%"
           >
-            <TabList justifyContent="center" mt="20px" mb="20px">
+            <TabList justifyContent="center" h="5%">
               <Tab>Dados Gerais</Tab>
               <Tab>Orgãos participantes</Tab>
               <Tab>Frentes</Tab>
             </TabList>
-            <TabPanels w="100%" h="90%">
+            <TabPanels w="100%" h="95%">
               <TabPanel w="100%" h="100%" p="0px">
                 <Flex w="100%" h="100%" direction="column">
                   <DadosGerais data={data!} deputadoID={deputadoID} />

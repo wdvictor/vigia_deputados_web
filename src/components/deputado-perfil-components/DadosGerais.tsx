@@ -1,4 +1,4 @@
-import { Flex, Spacer, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, Spacer, useBreakpointValue } from "@chakra-ui/react";
 import DadosEleitorais from "./DadosEleitorais";
 import DadosPessoaisContainer from "./DadosPessoaisContainer";
 import DeputadoDespesasContainer from "./DeputadoDespesasContainer";
@@ -20,20 +20,24 @@ const DadosGerais = ({ data, deputadoID }: Props) => {
     xl: true,
   });
   return (
-    <Flex
-      w="100%"
-      h="100%"
-      direction={isLargeScreen ? "row" : "column"}
-      overflow="hidden"
-      gap="5"
-    >
-      <Flex direction={"column"} gap={5} h="100%" alignItems="center">
+    <Flex w="100%" h="100%" direction="column" overflow="hidden" gap="5">
+      <Flex
+        direction={"row"}
+        gap={5}
+        h="100%"
+        w="100%"
+        alignItems="center"
+        justifyContent="space-evenly"
+        p="20px"
+        flex={1}
+      >
         <DadosPessoaisContainer data={data} />
         <GabineteContainer gabinete={data?.dados.ultimoStatus.gabinete} />
         <DadosEleitorais data={data!} />
       </Flex>
-
-      <DeputadoDespesasContainer deputadoID={deputadoID} />
+      <Box flex={2}>
+        <DeputadoDespesasContainer deputadoID={deputadoID} />
+      </Box>
       <Spacer />
     </Flex>
   );

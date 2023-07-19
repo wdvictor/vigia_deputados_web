@@ -1,10 +1,15 @@
-import { Center, Heading, VStack, Spacer, Box } from "@chakra-ui/react";
-
-import { secondaryColor } from "../../custom-theme";
+import {
+  Heading,
+  VStack,
+  Spacer,
+  Box,
+  HStack,
+  Divider,
+} from "@chakra-ui/react";
 
 import { DeputadoPerfilResponse } from "../../hooks/useDeputadosPerfil";
 import toTitleCase from "../../service/functions-services";
-import InfoRow from "./InfoRow";
+import InfoField from "./InfoField";
 
 const DadosPessoaisContainer = ({
   data,
@@ -18,35 +23,36 @@ const DadosPessoaisContainer = ({
   }
 
   return (
-    <Box
-      w="350px"
-      h="350px"
-      border={`2px solid ${secondaryColor}`}
-      borderRadius="15px"
-      textColor="black"
-      p="20px"
-    >
-      <Center pb="20px">
-        <Heading size="md">Dados Pessoais</Heading>
-      </Center>
-      <VStack h="70%" justifyContent="space-around">
-        <InfoRow
-          title="Nome Civíl"
-          data={toTitleCase(data?.dados.nomeCivil!)}
-        />
-        <InfoRow
-          title="Data Nascimento"
-          data={getDataNascimento(data?.dados.dataNascimento.toString())}
-        />
-        <InfoRow title="Escolaridade" data={data?.dados.escolaridade} />
-        <InfoRow
-          title="Município Nascimento"
-          data={data?.dados.municipioNascimento}
-        />
-        <InfoRow title="UF Nascimento" data={data?.dados.ufNascimento} />
+    <Box flex={2} h="100%">
+      <Heading size="md">Dados Pessoais</Heading>
+      <Divider />
+      <HStack h="100%" gap={5}>
+        <Box flex={1} h="100%">
+          <VStack>
+            <InfoField
+              title="Nome Civíl"
+              data={toTitleCase(data?.dados.nomeCivil!)}
+            />
+            <InfoField
+              title="Data Nascimento"
+              data={getDataNascimento(data?.dados.dataNascimento.toString())}
+            />
+            <InfoField title="Escolaridade" data={data?.dados.escolaridade} />
 
-        <Spacer />
-      </VStack>
+            <Spacer />
+          </VStack>
+        </Box>
+        <Box flex={1} h="100%">
+          <VStack>
+            <InfoField
+              title="Município Nascimento"
+              data={data?.dados.municipioNascimento}
+            />
+            <InfoField title="UF Nascimento" data={data?.dados.ufNascimento} />
+            <Spacer />
+          </VStack>
+        </Box>
+      </HStack>
     </Box>
   );
 };
