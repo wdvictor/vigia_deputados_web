@@ -9,7 +9,7 @@ import {
 } from "../../custom-theme";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
 
-import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -88,7 +88,7 @@ const GraficoDesespaTipo = ({ data }: { data: DeputadoDespesaResponse }) => {
       },
     },
   };
-  return <Pie data={chartData} options={options} id="1" />;
+  return <Doughnut data={chartData} options={options} id="1" />;
 };
 
 export default GraficoDesespaTipo;

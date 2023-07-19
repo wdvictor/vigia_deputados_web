@@ -2,20 +2,22 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
-import { primaryColor, whiteLilac } from "../../custom-theme";
+import { primaryColor, secondaryColor, whiteLilac } from "../../custom-theme";
 import { Box } from "@chakra-ui/react";
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
-  BarElement,
+  PointElement,
+  LineElement,
   Title,
   Tooltip,
   Legend
@@ -78,12 +80,13 @@ const GraficoDespesasBar = ({ data }: { data: DeputadoDespesaResponse }) => {
           .map((value) => parseFloat(value.toFixed(2)))
           .reverse(),
         backgroundColor: primaryColor,
+        borderColor: secondaryColor,
       },
     ],
   };
   return (
     <Box w="100%" h="100%" p="10px" borderRadius="10px">
-      <Bar data={chartInfo} options={options} id="0" />
+      <Line data={chartInfo} options={options} id="0" />
     </Box>
   );
 };

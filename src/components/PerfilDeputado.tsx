@@ -26,6 +26,7 @@ import DadosGerais from "./deputado-perfil-components/DadosGerais";
 import Orgaos from "./deputado-perfil-components/Orgaos";
 import Frentes from "./deputado-perfil-components/Frentes";
 import PerfilDeputadoMobile from "./deputado-perfil-components/mobile/PerfilDeputadoMobile";
+import DespesasTab from "./deputado-perfil-components/DespesasTab";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -107,14 +108,16 @@ const PerfilDeputado = () => {
           <Tabs variant="soft-rounded" colorScheme="green" w="100%" h="100%">
             <TabList justifyContent="center" h="5%" p="5px">
               <Tab>Dados Gerais</Tab>
+              <Tab>Despesas</Tab>
               <Tab>Orgãos participantes</Tab>
               <Tab>Frentes</Tab>
             </TabList>
             <TabPanels w="100%" h="95%">
               <TabPanel w="100%" h="100%" p="0px">
-                <Flex w="100%" h="100%" direction="column">
-                  <DadosGerais perfilData={data!} />
-                </Flex>
+                <DadosGerais perfilData={data!} />
+              </TabPanel>
+              <TabPanel>
+                <DespesasTab deputadoID={deputadoID} />
               </TabPanel>
               <TabPanel>
                 <Orgaos deputadoID={deputadoID} />

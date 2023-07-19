@@ -47,7 +47,7 @@ const SideBar = ({
       backgroundColor={secondaryColor}
       boxShadow="0px 5px 15px grey"
       h="100%"
-      w={isLargeScreen ? "15%" : "100%"}
+      w={isLargeScreen ? "17%" : "100%"}
     >
       <Avatar mt="55px" boxSize="100px" src={urlFoto} />
       <Text color="white" fontWeight="bold">
