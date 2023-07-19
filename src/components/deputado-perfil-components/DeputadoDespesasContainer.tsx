@@ -1,14 +1,16 @@
 import {
   Box,
   Center,
+  Container,
   Flex,
+  HStack,
   Heading,
   Spinner,
   VStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-import { secondaryColor } from "../../custom-theme";
+import { secondaryColor, whiteLilac } from "../../custom-theme";
 
 import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
 import GraficoDespesasBar from "./GraficoDespesasBar";
@@ -34,43 +36,31 @@ const DeputadoDespesasContainer = ({ deputadoID }: { deputadoID: number }) => {
   );
 
   return (
-    <VStack
-      h={isLargeScreen ? "100%" : "100%"}
-      w={isLargeScreen ? "70%" : "350px"}
-      border={`2px solid ${secondaryColor}`}
-      borderRadius="15px"
-      textColor="black"
-      alignSelf={isLargeScreen ? "start" : "center"}
-    >
-      {isLoading && (
+    <Box flex={2} h="45%" w="100%" p="20px">
+      <HStack alignItems="center" h="100%">
         <Box
-          display="flex"
+          flex={1}
+          bg={whiteLilac}
+          borderRadius="10px"
+          p="10px"
           h="100%"
           w="100%"
-          alignItems="center"
-          justifyContent="center"
         >
-          <Spinner size="xl" />
+          <GraficoDespesasBar data={data!} />
         </Box>
-      )}
-      <Center h="2%">
-        <Heading size="md" mt="30px">
-          Despesas
-        </Heading>
-      </Center>
-      <Flex direction="column" h="100%" width="100%">
-        <Box flex={1}>
-          <Center h="100%" w="100%">
-            <GraficoDespesasBar data={data!} />
-          </Center>
+
+        <Box
+          flex={1}
+          bg={whiteLilac}
+          borderRadius="10px"
+          p="10px"
+          h="100%"
+          w="100%"
+        >
+          <GraficoDesespaTipo data={data!} />
         </Box>
-        <Box flex={2}>
-          <Center h="100%">
-            <GraficoDesespaTipo data={data!} />
-          </Center>
-        </Box>
-      </Flex>
-    </VStack>
+      </HStack>
+    </Box>
   );
 };
 

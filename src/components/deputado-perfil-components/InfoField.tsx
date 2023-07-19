@@ -19,6 +19,7 @@ const InfoField = ({ title, data }: Props) => {
         bg={whiteLilac}
         p="10px"
         mt="10px"
+        borderRadius="10px"
       >
         {data ? data : "-"}
       </Box>

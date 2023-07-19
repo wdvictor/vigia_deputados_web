@@ -54,6 +54,7 @@ const GabineteContainer = ({
           flex={1}
           fontFamily="inter-light"
           bg={whiteLilac}
+          borderRadius="10px"
           p="10px"
           mt="10px"
           fontSize="1vw"
