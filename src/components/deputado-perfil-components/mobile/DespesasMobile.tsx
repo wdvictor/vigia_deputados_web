@@ -1,4 +1,14 @@
-import { VStack, Box, Center, Spinner, IconButton } from "@chakra-ui/react";
+import {
+  VStack,
+  Box,
+  Center,
+  Spinner,
+  IconButton,
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@chakra-ui/react";
 import React from "react";
 import { secondaryColor } from "../../../custom-theme";
 import { Params, useLoaderData, useNavigate } from "react-router-dom";
@@ -33,11 +43,24 @@ const DespesasMobile = () => {
           onClick={() => navigate(-1)}
         />
       </Box>
+      <Box h="15vh"></Box>
       {isLoading && (
         <Center>
           <Spinner />
         </Center>
       )}
+      {error ||
+        (data?.dados.length == 0 && (
+          <Center h="100%" w="100%">
+            <Alert status="error" m="20px" borderRadius="10px">
+              <AlertIcon />
+              <AlertTitle>Erro de conexão!</AlertTitle>
+              <AlertDescription>
+                Não foi possível pegar as despesas no momento.
+              </AlertDescription>
+            </Alert>
+          </Center>
+        ))}
     </VStack>
   );
 };

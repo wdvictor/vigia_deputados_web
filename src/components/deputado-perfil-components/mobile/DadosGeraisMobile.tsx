@@ -1,20 +1,7 @@
-import {
-  Box,
-  Center,
-  Container,
-  Divider,
-  Heading,
-  IconButton,
-  Spinner,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Heading, IconButton, Spinner, VStack } from "@chakra-ui/react";
 import { Params, useLoaderData, useNavigate } from "react-router-dom";
-import useData from "../../../hooks/useData";
-import useDeputadosPerfil, {
-  DeputadoPerfilResponse,
-} from "../../../hooks/useDeputadosPerfil";
-import { secondaryColor, whiteLilac } from "../../../custom-theme";
+import useDeputadosPerfil from "../../../hooks/useDeputadosPerfil";
+import { secondaryColor } from "../../../custom-theme";
 import { SlArrowLeft } from "react-icons/sl";
 import toTitleCase from "../../../service/functions-services";
 import MobileInfoField from "./MobileInfoField";
@@ -22,6 +9,7 @@ import MobileInfoField from "./MobileInfoField";
 interface LoaderData {
   deputadoID: number;
 }
+
 const DadosGeraisMobile = () => {
   const paramsData = useLoaderData();
   const deputadoID = (paramsData as LoaderData).deputadoID;
