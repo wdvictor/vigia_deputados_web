@@ -18,14 +18,6 @@ import { secondaryColor, whiteLilac } from "../../../custom-theme";
 import { SlArrowLeft } from "react-icons/sl";
 import toTitleCase from "../../../service/functions-services";
 import MobileInfoField from "./MobileInfoField";
-export async function dadosGeraisLoader({
-  params,
-}: {
-  params: Params<string>;
-}) {
-  let deputadoID = parseInt(params["deputadoID"]!);
-  return { deputadoID };
-}
 
 interface LoaderData {
   deputadoID: number;
@@ -122,3 +114,12 @@ const DadosGeraisMobile = () => {
 };
 
 export default DadosGeraisMobile;
+
+export async function dadosGeraisLoader({
+  params,
+}: {
+  params: Params<string>;
+}) {
+  let deputadoID = parseInt(params["deputadoID"]!);
+  return { deputadoID };
+}

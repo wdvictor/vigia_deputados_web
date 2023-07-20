@@ -10,6 +10,9 @@ import theme from "./theme.ts";
 import DadosGeraisMobile, {
   dadosGeraisLoader,
 } from "./components/deputado-perfil-components/mobile/DadosGeraisMobile.tsx";
+import DespesasMobile, {
+  despesasLoader,
+} from "./components/deputado-perfil-components/mobile/DespesasMobile.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +29,12 @@ const router = createBrowserRouter([
     element: <DadosGeraisMobile />,
 
     loader: dadosGeraisLoader,
+  },
+  {
+    path: "/perfil-deputado/:deputadoID/despesas",
+    element: <DespesasMobile />,
+
+    loader: despesasLoader,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(

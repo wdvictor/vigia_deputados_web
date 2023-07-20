@@ -32,7 +32,7 @@ const PerfilDeputadoMobile = ({ data }: { data: DeputadoPerfilResponse }) => {
     rede = rede.replace("http://", "");
     rede = rede.replace("www.", "");
     let urlRedeList: string[] = rede.split(".");
-    console.log(urlRedeList[0]);
+
     return urlRedeList[0];
   }
 
@@ -83,10 +83,15 @@ const PerfilDeputadoMobile = ({ data }: { data: DeputadoPerfilResponse }) => {
           ))}
         </Center>
         {data.dados.redeSocial && <Box mt="100px"></Box>}
-        <Flex direction="column" justifyContent="space-evenly" h="40%">
+        <Flex direction="column">
           <MenuButton
             title="Dados Gerais"
             path={`/perfil-deputado/${data.dados.id}/dados-gerais`}
+          />
+          <Box h="20px"></Box>
+          <MenuButton
+            title="Despesas"
+            path={`/perfil-deputado/${data.dados.id}/despesas`}
           />
 
           {/* <MenuButton title="Despesas" onClick={() => {}} />
