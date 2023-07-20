@@ -12,6 +12,7 @@ import {
 
 import { secondaryColor } from "../../custom-theme";
 import { BsTwitter, BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
+import { SlArrowRight } from "react-icons/sl";
 import { IconType } from "react-icons";
 import "../../App.css";
 interface Props {
@@ -49,8 +50,8 @@ const SideBar = ({
     <VStack
       backgroundColor={secondaryColor}
       boxShadow="0px 5px 15px grey"
-      h="100%"
-      w="20%"
+      h="100vh"
+      w="30vh"
       p="10px"
     >
       <Avatar mt="55px" boxSize="100px" src={urlFoto} />
@@ -70,10 +71,11 @@ const SideBar = ({
             </Box>
           ))}
       </HStack>
+      <Box h="5%"></Box>
       <Button
         variant="outline"
         color="white"
-        w="100%"
+        w={selectedIndex == 0 ? "100%" : "90%"}
         onClick={() => onSelectIndex(0)}
       >
         Dados gerais
@@ -81,10 +83,26 @@ const SideBar = ({
       <Button
         variant="outline"
         color="white"
-        w="100%"
+        w={selectedIndex == 1 ? "100%" : "90%"}
         onClick={() => onSelectIndex(1)}
       >
         Despesas
+      </Button>
+      <Button
+        variant="outline"
+        color="white"
+        w={selectedIndex == 2 ? "100%" : "90%"}
+        onClick={() => onSelectIndex(2)}
+      >
+        Orgãos
+      </Button>
+      <Button
+        variant="outline"
+        color="white"
+        w={selectedIndex == 3 ? "100%" : "90%"}
+        onClick={() => onSelectIndex(3)}
+      >
+        Frentes
       </Button>
     </VStack>
   );

@@ -80,6 +80,8 @@ const PerfilDeputado = () => {
       )}
       {aba == 0 && !isLoading && <DadosGerais perfilData={data!} />}
       {aba == 1 && !isLoading && <DespesasTab deputadoID={deputadoID} />}
+      {aba == 2 && !isLoading && <Orgaos deputadoID={deputadoID} />}
+      {aba == 3 && !isLoading && <Frentes deputadoID={deputadoID} />}
     </HStack>
   );
 };
