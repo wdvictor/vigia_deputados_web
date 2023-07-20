@@ -112,8 +112,8 @@ const PerfilDeputado = () => {
               <Tab>Orgãos participantes</Tab>
               <Tab>Frentes</Tab>
             </TabList>
-            <TabPanels w="100%" h="95%">
-              <TabPanel w="100%" h="100%" p="0px">
+            <TabPanels maxH="95vh" overflowY="scroll">
+              <TabPanel>
                 <DadosGerais perfilData={data!} />
               </TabPanel>
               <TabPanel>

@@ -1,13 +1,4 @@
-import {
-  Box,
-  HStack,
-  Heading,
-  Spacer,
-  Text,
-  VStack,
-  useBreakpointValue,
-} from "@chakra-ui/react";
-import React from "react";
+import { Box, HStack, Text, VStack } from "@chakra-ui/react";
 import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
 import GraficoDesespaTipo from "./GraficoDesespaTipo";
 import { secondaryColor } from "../../custom-theme";
@@ -19,18 +10,20 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
   const { data } = useDeputadoDespesa(deputadoID, year);
 
   return (
-    <HStack w="100%" h="100%" align="start">
+    <HStack align="start">
       <Box
         flex={1}
-        maxH="90vh"
+        maxH="95vh"
         border={`2px solid ${secondaryColor}`}
         borderRadius="20px"
       >
-        <VStack h="100%" w="100%">
+        <VStack h="90vh" overflowY="clip">
           <Text mt="5px" fontSize="1.5vw" fontFamily="inter-bold" color="gray">
             Distribuição de despesas
           </Text>
-          <GraficoDesespaTipo data={data!} />
+          <Box w="30vw">
+            <GraficoDesespaTipo data={data!} />
+          </Box>
         </VStack>
       </Box>
       <Box flex={1} h="100%" maxH="100vh">
