@@ -42,7 +42,7 @@ const DadosGeraisMobile = () => {
     return "-";
   }
   return (
-    <VStack h="100vh" w="100vw" bg="white">
+    <VStack h="100vh" w="100vw" bg="white" overflow="scroll">
       <Box position="absolute" bg={secondaryColor} h="10vh" w="100vw">
         <IconButton
           p="10px"
@@ -53,12 +53,16 @@ const DadosGeraisMobile = () => {
           bg="transparent"
           size="xl"
           color="white"
+          onClick={() => navigate(-1)}
         />
       </Box>
       {isLoading && <Spinner />}
-      <Box h="15vh"></Box>
+      <Box h="10vh"></Box>
       {!isLoading && (
-        <VStack w="100%" p="20px">
+        <VStack w="100%" p="20px" align="start">
+          <Heading fontFamily="inter-bold" color="gray">
+            Dados pessoais
+          </Heading>
           <MobileInfoField
             title="Nome Civíl"
             data={toTitleCase(data?.dados.nomeCivil!)}
@@ -77,7 +81,39 @@ const DadosGeraisMobile = () => {
           />
           <MobileInfoField
             title="UF de nascimento"
-            data={toTitleCase(data?.dados.ufNascimento!)}
+            data={data?.dados.ufNascimento!}
+          />
+          <Box h="50px"></Box>
+          <Heading fontFamily="inter-bold" color="gray">
+            Gabinete
+          </Heading>
+          <MobileInfoField
+            title="Gabinete"
+            data={data?.dados.ultimoStatus.gabinete.nome!}
+          />
+          <MobileInfoField
+            title="Anexo"
+            data={data?.dados.ultimoStatus.gabinete.predio ?? ""}
+          />
+          <MobileInfoField
+            title="Andar"
+            data={data?.dados.ultimoStatus.gabinete.andar ?? ""}
+          />
+          <MobileInfoField
+            title="Email"
+            data={data?.dados.ultimoStatus.gabinete.email ?? ""}
+          />
+          <Box h="50px"></Box>
+          <Heading fontFamily="inter-bold" color="gray">
+            Dados eleitorais
+          </Heading>
+          <MobileInfoField
+            title="Condição"
+            data={data?.dados.ultimoStatus.condicaoEleitoral ?? ""}
+          />
+          <MobileInfoField
+            title="Situação"
+            data={data?.dados.ultimoStatus.situacao ?? ""}
           />
         </VStack>
       )}
