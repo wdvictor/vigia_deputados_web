@@ -25,7 +25,7 @@ const useData = <T>(endpoint: string, effectHookData: any, params?: string[],) =
                 urlParams += `&${param}`;
             }
         }
-        console.log(`new request to ${endpoint}`);
+
         apiClient.get<T>(endpoint + urlParams)
             .then((res) => {
                 setData(res.data);

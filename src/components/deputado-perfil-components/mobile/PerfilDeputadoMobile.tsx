@@ -29,10 +29,10 @@ const PerfilDeputadoMobile = ({ data }: { data: DeputadoPerfilResponse }) => {
 
   function getRede(urlRede: string): string {
     let rede = urlRede.replace("https://", "");
-    rede = urlRede.replace("http://", "");
+    rede = rede.replace("http://", "");
     rede = rede.replace("www.", "");
     let urlRedeList: string[] = rede.split(".");
-
+    console.log(urlRedeList[0]);
     return urlRedeList[0];
   }
 

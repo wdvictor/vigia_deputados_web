@@ -39,7 +39,7 @@ const PerfilDeputado = () => {
   if (!isLargeScreen && data) {
     return <PerfilDeputadoMobile data={data} />;
   }
-  console.log(`aba selecionada ${aba}`);
+
   return (
     <HStack h="100vh" w="100vw" alignItems="start" gap={0}>
       <SideBar

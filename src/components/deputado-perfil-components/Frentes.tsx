@@ -1,4 +1,4 @@
-import { Wrap, Card, CardHeader, useBreakpointValue } from "@chakra-ui/react";
+import { Wrap, Card, CardHeader } from "@chakra-ui/react";
 
 import { secondaryColor } from "../../custom-theme";
 
