@@ -84,11 +84,7 @@ const GraficoDespesasBar = ({ data }: { data: DeputadoDespesaResponse }) => {
       },
     ],
   };
-  return (
-    <Box w="100%" h="100%" p="10px" borderRadius="10px">
-      <Line data={chartInfo} options={options} id="0" />
-    </Box>
-  );
+  return <Line data={chartInfo} options={options} id="0" />;
 };
 
 export default GraficoDespesasBar;

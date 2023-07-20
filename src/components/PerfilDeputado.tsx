@@ -27,6 +27,7 @@ import Orgaos from "./deputado-perfil-components/Orgaos";
 import Frentes from "./deputado-perfil-components/Frentes";
 import PerfilDeputadoMobile from "./deputado-perfil-components/mobile/PerfilDeputadoMobile";
 import DespesasTab from "./deputado-perfil-components/DespesasTab";
+import { useState } from "react";
 
 export async function loader({ params }: { params: Params<string> }) {
   let deputadoID = parseInt(params["deputadoID"]!);
@@ -39,9 +40,7 @@ interface LoaderData {
 
 const PerfilDeputado = () => {
   window.scrollTo(0, 0);
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const [aba, setAba] = useState(0);
   const paramsData = useLoaderData();
   const deputadoID = (paramsData as LoaderData).deputadoID;
   const { data, isLoading } = useDeputadosPerfil(deputadoID);
@@ -57,39 +56,17 @@ const PerfilDeputado = () => {
   if (!isLargeScreen && data) {
     return <PerfilDeputadoMobile data={data} />;
   }
-
+  console.log(`aba selecionada ${aba}`);
   return (
-    <HStack
-      h={isLargeScreen ? "100vh" : "300vh"}
-      w="100vw"
-      alignItems="start"
-      gap={0}
-    >
-      {isLargeScreen ? (
-        <SideBar
-          isLargeScreen={isLargeScreen}
-          nomeEleitoral={data?.dados.ultimoStatus.nomeEleitoral!}
-          redesSociais={data?.dados.redeSocial}
-          siglaPartido={data?.dados.ultimoStatus.siglaPartido!}
-          urlFoto={data?.dados.ultimoStatus.urlFoto!}
-        />
-      ) : (
-        <Drawer placement="left" isOpen={isOpen} onClose={onClose}>
-          <DrawerOverlay padding="0px">
-            <DrawerContent padding="0px">
-              <DrawerBody padding="0px">
-                <SideBar
-                  isLargeScreen={isLargeScreen!}
-                  nomeEleitoral={data?.dados.ultimoStatus.nomeEleitoral!}
-                  redesSociais={data?.dados.redeSocial}
-                  siglaPartido={data?.dados.ultimoStatus.siglaPartido!}
-                  urlFoto={data?.dados.ultimoStatus.urlFoto!}
-                />
-              </DrawerBody>
-            </DrawerContent>
-          </DrawerOverlay>
-        </Drawer>
-      )}
+    <HStack h="100vh" w="100vw" alignItems="start" gap={0}>
+      <SideBar
+        selectedIndex={aba}
+        onSelectIndex={setAba}
+        nomeEleitoral={data?.dados.ultimoStatus.nomeEleitoral!}
+        redesSociais={data?.dados.redeSocial}
+        siglaPartido={data?.dados.ultimoStatus.siglaPartido!}
+        urlFoto={data?.dados.ultimoStatus.urlFoto!}
+      />
       {isLoading && (
         <Box
           display="flex"
@@ -101,34 +78,8 @@ const PerfilDeputado = () => {
           <Spinner size="xl" />
         </Box>
       )}
-
-      {!isLoading && (
-        <Flex direction={isLargeScreen ? "row" : "column"} w="100%" h="100%">
-          {!isLargeScreen && <NavBar showDrawerIcon={true} onClick={onOpen} />}
-          <Tabs variant="soft-rounded" colorScheme="green" w="100%" h="100%">
-            <TabList justifyContent="center" h="5%" p="5px">
-              <Tab>Dados Gerais</Tab>
-              <Tab>Despesas</Tab>
-              <Tab>Orgãos participantes</Tab>
-              <Tab>Frentes</Tab>
-            </TabList>
-            <TabPanels maxH="95vh" overflowY="scroll">
-              <TabPanel>
-                <DadosGerais perfilData={data!} />
-              </TabPanel>
-              <TabPanel>
-                <DespesasTab deputadoID={deputadoID} />
-              </TabPanel>
-              <TabPanel>
-                <Orgaos deputadoID={deputadoID} />
-              </TabPanel>
-              <TabPanel>
-                <Frentes deputadoID={deputadoID} />
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-        </Flex>
-      )}
+      {aba == 0 && !isLoading && <DadosGerais perfilData={data!} />}
+      {aba == 1 && !isLoading && <DespesasTab deputadoID={deputadoID} />}
     </HStack>
   );
 };

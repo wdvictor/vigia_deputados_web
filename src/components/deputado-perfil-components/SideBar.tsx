@@ -7,6 +7,7 @@ import {
   Spacer,
   VStack,
   Text,
+  Button,
 } from "@chakra-ui/react";
 
 import { secondaryColor } from "../../custom-theme";
@@ -16,7 +17,8 @@ import "../../App.css";
 interface Props {
   nomeEleitoral: string;
   siglaPartido: string;
-  isLargeScreen: boolean;
+  selectedIndex: number;
+  onSelectIndex: (index: number) => void;
   urlFoto: string;
   redesSociais: string[] | undefined;
 }
@@ -24,7 +26,8 @@ interface Props {
 const SideBar = ({
   nomeEleitoral,
   siglaPartido,
-  isLargeScreen,
+  selectedIndex,
+  onSelectIndex,
   urlFoto,
   redesSociais,
 }: Props) => {
@@ -47,7 +50,8 @@ const SideBar = ({
       backgroundColor={secondaryColor}
       boxShadow="0px 5px 15px grey"
       h="100%"
-      w={isLargeScreen ? "17%" : "100%"}
+      w="20%"
+      p="10px"
     >
       <Avatar mt="55px" boxSize="100px" src={urlFoto} />
       <Text color="white" fontWeight="bold">
@@ -66,6 +70,22 @@ const SideBar = ({
             </Box>
           ))}
       </HStack>
+      <Button
+        variant="outline"
+        color="white"
+        w="100%"
+        onClick={() => onSelectIndex(0)}
+      >
+        Dados gerais
+      </Button>
+      <Button
+        variant="outline"
+        color="white"
+        w="100%"
+        onClick={() => onSelectIndex(1)}
+      >
+        Despesas
+      </Button>
     </VStack>
   );
   1;

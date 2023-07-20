@@ -1,4 +1,4 @@
-import { Box, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, Center, HStack, Text, VStack } from "@chakra-ui/react";
 import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
 import GraficoDesespaTipo from "./GraficoDesespaTipo";
 import { secondaryColor } from "../../custom-theme";
@@ -10,14 +10,15 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
   const { data } = useDeputadoDespesa(deputadoID, year);
 
   return (
-    <HStack align="start">
+    <HStack align="start" p="2vh" maxH="100vh" w="80vw">
       <Box
         flex={1}
-        maxH="95vh"
         border={`2px solid ${secondaryColor}`}
         borderRadius="20px"
+        h="97vh"
+        overflowY="clip"
       >
-        <VStack h="90vh" overflowY="clip">
+        <VStack>
           <Text mt="5px" fontSize="1.5vw" fontFamily="inter-bold" color="gray">
             Distribuição de despesas
           </Text>
@@ -26,16 +27,18 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
           </Box>
         </VStack>
       </Box>
-      <Box flex={1} h="100%" maxH="100vh">
-        <VStack h="90vh" w="100%">
+      <Box flex={1} maxH="96vh">
+        <VStack>
           <Box
             flex={1}
             border={`2px solid ${secondaryColor}`}
             borderRadius="20px"
             w="100%"
-            h="45vh"
+            h="50vh"
           >
-            <GraficoDespesasBar data={data!} />
+            <Center maxH="45vh" p="20px 5px 20px 5px">
+              <GraficoDespesasBar data={data!} />
+            </Center>
           </Box>
 
           <Box
@@ -43,7 +46,7 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
             border={`2px solid ${secondaryColor}`}
             borderRadius="20px"
             w="100%"
-            maxH="45vh"
+            maxH="50vh"
             overflowY="scroll"
           >
             {data?.dados.map((d) => (
