@@ -1,4 +1,16 @@
-import { Box, Center, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Box,
+  Center,
+  Container,
+  HStack,
+  Spinner,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
 import GraficoDesespaTipo from "./GraficoDesespaTipo";
 import { secondaryColor } from "../../custom-theme";
@@ -7,8 +19,33 @@ import GraficoDespesasBar from "./GraficoDespesasBar";
 const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
   const year = new Date().getFullYear();
 
-  const { data } = useDeputadoDespesa(deputadoID, year);
+  const { data, isLoading, error } = useDeputadoDespesa(deputadoID, year);
 
+  if (isLoading) {
+    return (
+      <Box h="100vh" w="100vw">
+        <Center h="100%" w="100%">
+          <Spinner />
+        </Center>
+      </Box>
+    );
+  }
+
+  if (error || data?.dados.length == 0) {
+    return (
+      <Box h="100vh" w="100vw">
+        <Center h="100%" w="100%">
+          <Alert status="error" ml="25%" mr="25%" borderRadius="10px">
+            <AlertIcon />
+            <AlertTitle>Erro de conexão!</AlertTitle>
+            <AlertDescription>
+              Não foi possível pegar as despesas no momento.
+            </AlertDescription>
+          </Alert>
+        </Center>
+      </Box>
+    );
+  }
   return (
     <HStack align="start" p="2vh" maxH="100vh" w="80vw">
       <Box
