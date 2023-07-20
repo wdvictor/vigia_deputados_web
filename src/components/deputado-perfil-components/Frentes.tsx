@@ -5,23 +5,18 @@ import { secondaryColor } from "../../custom-theme";
 import useDeputadosFrentes from "../../hooks/useDeputadoFrentes";
 
 const Frentes = ({ deputadoID }: { deputadoID: number }) => {
-  const isLargeScreen = useBreakpointValue({
-    base: false,
-    sm: false,
-    md: false,
-    lg: true,
-    xl: true,
-  });
   const { data } = useDeputadosFrentes(deputadoID);
   return (
-    <Wrap spacing="5">
+    <Wrap spacing="5" p="20px" maxH="100vh" overflow="scroll" w="85vw">
       {data?.dados.map((frente) => (
         <Card
           key={`${frente.id}`}
-          backgroundColor={secondaryColor}
-          maxWidth={isLargeScreen ? "45%" : "100%"}
+          border={`2px solid ${secondaryColor}`}
+          maxWidth="40%"
         >
-          <CardHeader color="white">{frente.titulo}</CardHeader>
+          <CardHeader color="black" fontFamily="inter-medium">
+            {frente.titulo}
+          </CardHeader>
         </Card>
       ))}
     </Wrap>

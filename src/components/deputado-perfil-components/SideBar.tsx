@@ -50,7 +50,7 @@ const SideBar = ({
       backgroundColor={secondaryColor}
       boxShadow="0px 5px 15px grey"
       h="100vh"
-      w="30vh"
+      w="15vw"
       p="10px"
     >
       <Avatar mt="55px" boxSize="100px" src={urlFoto} />

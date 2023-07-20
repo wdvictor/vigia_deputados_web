@@ -37,7 +37,7 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
   }
   return (
     <VStack
-      w="100vw"
+      w="85vw"
       p="20px"
       align="start"
       maxH="100vh"
