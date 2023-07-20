@@ -12,7 +12,6 @@ import {
 
 import { secondaryColor } from "../../custom-theme";
 import { BsTwitter, BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
-import { SlArrowRight } from "react-icons/sl";
 import { IconType } from "react-icons";
 import "../../App.css";
 interface Props {

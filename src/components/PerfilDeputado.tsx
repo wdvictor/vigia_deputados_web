@@ -1,26 +1,9 @@
-import {
-  Box,
-  Drawer,
-  DrawerBody,
-  DrawerContent,
-  DrawerOverlay,
-  Flex,
-  HStack,
-  Spinner,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  useBreakpointValue,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, HStack, Spinner, useBreakpointValue } from "@chakra-ui/react";
 
 import { Params, useLoaderData } from "react-router-dom";
 
 import useDeputadosPerfil from "../hooks/useDeputadosPerfil";
 
-import NavBar from "./NavBar";
 import SideBar from "./deputado-perfil-components/SideBar";
 import DadosGerais from "./deputado-perfil-components/DadosGerais";
 import Orgaos from "./deputado-perfil-components/Orgaos";

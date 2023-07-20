@@ -9,10 +9,8 @@ import {
   Spacer,
   Text,
   VStack,
-  Wrap,
-  useBreakpointValue,
 } from "@chakra-ui/react";
-import useDeputadoOrgaos, { Dado } from "../../hooks/useDeputadoOrgaos";
+import useDeputadoOrgaos from "../../hooks/useDeputadoOrgaos";
 import { secondaryColor } from "../../custom-theme";
 
 const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
