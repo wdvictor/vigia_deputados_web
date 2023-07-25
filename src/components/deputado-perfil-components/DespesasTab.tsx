@@ -6,14 +6,17 @@ import {
   Box,
   Center,
   HStack,
+  Heading,
+  Spacer,
   Spinner,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
 import GraficoDesespaTipo from "./GraficoDesespaTipo";
-import { secondaryColor } from "../../custom-theme";
+import { secondaryColor, whiteLilac } from "../../custom-theme";
 import GraficoDespesasBar from "./GraficoDespesasBar";
+import NotaFiscal from "./NotaFiscal";
 
 const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
   const year = new Date().getFullYear();
@@ -45,6 +48,7 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
       </Box>
     );
   }
+
   return (
     <HStack align="start" p="2vh" maxH="100vh" w="82vw">
       <Box
@@ -83,11 +87,29 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
             borderRadius="20px"
             w="100%"
             maxH="50vh"
-            overflowY="scroll"
+            overflowY="auto"
+            css={{
+              "&::-webkit-scrollbar": {
+                width: "8px",
+              },
+              "&::-webkit-scrollbar-track": {
+                borderRadius: "10px",
+              },
+              "&::-webkit-scrollbar-thumb": {
+                borderRadius: "10px",
+                backgroundColor: "rgba(0, 0, 0, 0.2)",
+              },
+            }}
           >
-            {data?.dados.map((d) => (
-              <Box>{d.cnpjCpfFornecedor}</Box>
-            ))}
+            <VStack h="50vh" pl="20px" pr="20px">
+              <Heading fontSize="20px" mt="10px" mb="10px" color="gray">
+                Notas fiscais
+              </Heading>
+              {data?.dados.slice(0, 3).map((d) => (
+                <NotaFiscal dado={d} />
+              ))}
+              <Text>E mais {data?.dados.length! - 3} notas fiscais</Text>
+            </VStack>
           </Box>
         </VStack>
       </Box>
