@@ -46,7 +46,7 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
     );
   }
   return (
-    <HStack align="start" p="2vh" maxH="100vh" w="80vw">
+    <HStack align="start" p="2vh" maxH="100vh" w="82vw">
       <Box
         flex={1}
         border={`2px solid ${secondaryColor}`}
