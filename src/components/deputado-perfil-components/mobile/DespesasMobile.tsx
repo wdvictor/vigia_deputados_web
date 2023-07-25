@@ -14,6 +14,8 @@ import { secondaryColor } from "../../../custom-theme";
 import { Params, useLoaderData, useNavigate } from "react-router-dom";
 import useDeputadoDespesa from "../../../hooks/useDeputadoDespesas";
 import { SlArrowLeft } from "react-icons/sl";
+import GraficoDespesasBar from "../GraficoDespesasBar";
+import GraficoDesespaTipo from "../GraficoDesespaTipo";
 
 interface LoaderData {
   deputadoID: number;
@@ -61,6 +63,12 @@ const DespesasMobile = () => {
             </Alert>
           </Center>
         ))}
+      <Box w="100%" p="20px">
+        <GraficoDespesasBar data={data!} />
+      </Box>
+      <Box mt="20px">
+        <GraficoDesespaTipo data={data!} />
+      </Box>
     </VStack>
   );
 };
