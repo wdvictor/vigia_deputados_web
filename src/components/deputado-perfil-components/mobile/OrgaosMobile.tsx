@@ -1,4 +1,5 @@
 import {
+  Text,
   Badge,
   Box,
   Card,
@@ -7,14 +8,20 @@ import {
   CardHeader,
   HStack,
   Spacer,
-  Text,
   VStack,
 } from "@chakra-ui/react";
-import useDeputadoOrgaos from "../../hooks/useDeputadoOrgaos";
-import { secondaryColor } from "../../custom-theme";
-import { Params } from "react-router-dom";
 
-const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
+import { secondaryColor } from "../../../custom-theme";
+import useDeputadoOrgaos from "../../../hooks/useDeputadoOrgaos";
+import { useLoaderData } from "react-router-dom";
+
+interface LoaderData {
+  deputadoID: number;
+}
+
+const OrgaosMobile = () => {
+  const paramsData = useLoaderData();
+  const deputadoID = (paramsData as LoaderData).deputadoID;
   const { data } = useDeputadoOrgaos(deputadoID);
 
   function formatDate(date: string | undefined): string {
@@ -38,8 +45,8 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
   }
   return (
     <VStack
-      w="85vw"
-      p="20px"
+      w="100vw"
+      p="10px"
       align="start"
       maxH="100vh"
       overflow="scroll"
@@ -57,7 +64,7 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
             <Card
               key={`${orgao.idOrgao}${orgao.codTitulo}`}
               border={`2px solid ${secondaryColor}`}
-              maxW={"45%"}
+              w={"100%"}
               mt="30px"
               mb="30px"
             >
@@ -82,13 +89,6 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
               </CardBody>
               <CardFooter color="white">
                 <HStack w="100%">
-                  <Text m="0px" fontFamily="inter-medium" color="black">
-                    Início:
-                  </Text>
-                  <Text m="0px" color="black" fontFamily="inter-medium">
-                    {formatDate(orgao.dataInicio)}
-                  </Text>
-                  <Spacer />
                   {orgao.dataFim && (
                     <Text m="0px" color="black" fontFamily="inter-medium">
                       Fim: {formatDate(orgao.dataFim)}
@@ -104,9 +104,4 @@ const Orgaos = ({ deputadoID }: { deputadoID: number }) => {
   );
 };
 
-export default Orgaos;
-
-export async function orgaosLoader({ params }: { params: Params<string> }) {
-  let deputadoID = parseInt(params["deputadoID"]!);
-  return { deputadoID };
-}
+export default OrgaosMobile;

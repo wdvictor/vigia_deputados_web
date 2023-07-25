@@ -1,7 +1,5 @@
 import { Box, Text } from "@chakra-ui/react";
-import React from "react";
 import { whiteLilac } from "../../../custom-theme";
-import toTitleCase from "../../../service/functions-services";
 
 interface Props {
   title: string;

@@ -9,7 +9,7 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react";
-import React from "react";
+
 import { secondaryColor } from "../../../custom-theme";
 import { Params, useLoaderData, useNavigate } from "react-router-dom";
 import useDeputadoDespesa from "../../../hooks/useDeputadoDespesas";

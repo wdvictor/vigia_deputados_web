@@ -1,4 +1,4 @@
-import { Flex, Box, useBreakpoint, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Box } from "@chakra-ui/react";
 import { whiteLilac } from "../../custom-theme";
 
 interface Props {

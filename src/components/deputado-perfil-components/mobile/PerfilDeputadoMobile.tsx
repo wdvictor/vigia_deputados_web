@@ -93,6 +93,11 @@ const PerfilDeputadoMobile = ({ data }: { data: DeputadoPerfilResponse }) => {
             title="Despesas"
             path={`/perfil-deputado/${data.dados.id}/despesas`}
           />
+          <Box h="20px"></Box>
+          <MenuButton
+            title="Orgãos"
+            path={`/perfil-deputado/${data.dados.id}/orgaos`}
+          />
 
           {/* <MenuButton title="Despesas" onClick={() => {}} />
           <MenuButton title="Orgãos participantes" onClick={() => {}} />

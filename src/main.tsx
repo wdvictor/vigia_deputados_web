@@ -13,6 +13,8 @@ import DadosGeraisMobile, {
 import DespesasMobile, {
   despesasLoader,
 } from "./components/deputado-perfil-components/mobile/DespesasMobile.tsx";
+import { orgaosLoader } from "./components/deputado-perfil-components/Orgaos.tsx";
+import OrgaosMobile from "./components/deputado-perfil-components/mobile/OrgaosMobile.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +37,12 @@ const router = createBrowserRouter([
     element: <DespesasMobile />,
 
     loader: despesasLoader,
+  },
+  {
+    path: "/perfil-deputado/:deputadoID/orgaos",
+    element: <OrgaosMobile />,
+
+    loader: orgaosLoader,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")!).render(

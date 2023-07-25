@@ -10,8 +10,7 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { DeputadoDespesaResponse } from "../../hooks/useDeputadoDespesas";
-import { primaryColor, secondaryColor, whiteLilac } from "../../custom-theme";
-import { Box } from "@chakra-ui/react";
+import { primaryColor, secondaryColor } from "../../custom-theme";
 
 ChartJS.register(
   CategoryScale,
