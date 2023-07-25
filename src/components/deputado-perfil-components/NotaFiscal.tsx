@@ -1,15 +1,30 @@
-import { Box, HStack, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  HStack,
+  Icon,
+  Link,
+  VStack,
+  Text,
+  Divider,
+} from "@chakra-ui/react";
 
 import { Dado } from "../../hooks/useDeputadoDespesas";
-
+import { AiOutlineFilePdf } from "react-icons/ai";
 const InfoRow = ({ title, dado }: { title: string; dado: string }) => {
   return (
-    <HStack w="100%">
+    <HStack w="100%" pl="20px" pr="20px">
       <Box flex={1} fontFamily="inter-medium" color="gray">
         {title}:
       </Box>
 
-      <Box flex={1} fontFamily="inter-medium">
+      <Box
+        flex={1}
+        fontFamily="inter-light"
+        color="black
+      "
+      >
         {dado}
       </Box>
     </HStack>
@@ -25,8 +40,14 @@ const NotaFiscal = ({ dado }: { dado: Dado }) => {
       date = new Date(data);
     }
 
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
+    let day = date.getDate().toString();
+    if (day.length === 1) {
+      day = `0${day}`;
+    }
+    let month = (date.getMonth() + 1).toString();
+    if (month.length === 1) {
+      month = `0${month}`;
+    }
     let year = date.getFullYear();
     return `${day}/${month}/${year}`;
   }
@@ -53,24 +74,54 @@ const NotaFiscal = ({ dado }: { dado: Dado }) => {
     return formatado;
   }
 
+  function formatToReal(value: number): string {
+    return (
+      "R$ " +
+      value
+        .toFixed(2)
+        .replace(".", ",")
+        .replace(/(\d)(?=(\d{3})+\,)/g, "$1.")
+    );
+  }
+
   return (
     <Box
-      boxShadow="0px 2px 5px gray"
-      p="10px 20px 10px 20px "
+      boxShadow="0px 5px 10px gray"
       w="100%"
       borderRadius="10px"
       mt="10px"
+      key={dado.codDocumento}
     >
-      <VStack align="start">
+      <VStack align="start" pt="10px">
+        <Text
+          mb="0"
+          ml="20px"
+          color="gray"
+          fontFamily="inter-bold"
+          fontSize="13px"
+        >
+          {formatDate(dado.dataDocumento)}
+        </Text>
+        <Divider m="0" />
+        <InfoRow title="Valor" dado={formatToReal(dado.valorDocumento)} />
         <InfoRow
-          title="CPF/CNPJ do fornecedor"
-          dado={formatCPForCNPJ(dado.cnpjCpfFornecedor)}
+          title="Tipo da despesa"
+          dado={dado.tipoDespesa.toLocaleLowerCase()}
         />
-        <InfoRow title="Nome do fornecedor" dado={dado.nomeFornecedor} />
-        <InfoRow
-          title="Data do documento"
-          dado={formatDate(dado.dataDocumento)}
-        />
+        <Link
+          href={dado.urlDocumento}
+          target="_blank"
+          rel="noopener noreferrer"
+          h="30px"
+          w="100%"
+          bg="red"
+          borderRadius="0px 0px 10px 10px"
+          p="5px 0px 5px 0px"
+        >
+          <Center>
+            <Icon color="white" as={AiOutlineFilePdf} boxSize="20px" />
+          </Center>
+        </Link>
       </VStack>
     </Box>
   );

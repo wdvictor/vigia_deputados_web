@@ -4,9 +4,11 @@ import {
   AlertIcon,
   AlertTitle,
   Box,
+  Button,
   Center,
   HStack,
   Heading,
+  Icon,
   Spacer,
   Spinner,
   Text,
@@ -17,6 +19,7 @@ import GraficoDesespaTipo from "./GraficoDesespaTipo";
 import { secondaryColor, whiteLilac } from "../../custom-theme";
 import GraficoDespesasBar from "./GraficoDespesasBar";
 import NotaFiscal from "./NotaFiscal";
+import { SlArrowRight } from "react-icons/sl";
 
 const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
   const year = new Date().getFullYear();
@@ -105,10 +108,23 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
               <Heading fontSize="20px" mt="10px" mb="10px" color="gray">
                 Notas fiscais
               </Heading>
-              {data?.dados.slice(0, 3).map((d) => (
+              {data?.dados.slice(0, 1).map((d) => (
                 <NotaFiscal dado={d} />
               ))}
-              <Text>E mais {data?.dados.length! - 3} notas fiscais</Text>
+              <Button
+                bg={secondaryColor}
+                m="20px"
+                textAlign="center"
+                w="50%"
+                p="20px"
+              >
+                <HStack>
+                  <Text color="white" mb="0">
+                    E mais {data?.dados.length! - 3} notas fiscais
+                  </Text>
+                  <Icon color="white" as={SlArrowRight} />
+                </HStack>
+              </Button>
             </VStack>
           </Box>
         </VStack>
