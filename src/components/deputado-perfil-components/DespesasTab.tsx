@@ -9,14 +9,13 @@ import {
   HStack,
   Heading,
   Icon,
-  Spacer,
   Spinner,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import useDeputadoDespesa from "../../hooks/useDeputadoDespesas";
 import GraficoDesespaTipo from "./GraficoDesespaTipo";
-import { secondaryColor, whiteLilac } from "../../custom-theme";
+import { secondaryColor } from "../../custom-theme";
 import GraficoDespesasBar from "./GraficoDespesasBar";
 import NotaFiscal from "./NotaFiscal";
 import { SlArrowRight } from "react-icons/sl";
@@ -108,8 +107,8 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
               <Heading fontSize="20px" mt="10px" mb="10px" color="gray">
                 Notas fiscais
               </Heading>
-              {data?.dados.slice(0, 1).map((d) => (
-                <NotaFiscal dado={d} />
+              {data?.dados.slice(0, 10).map((d) => (
+                <NotaFiscal key={d.codDocumento} dado={d} />
               ))}
               <Button
                 bg={secondaryColor}
@@ -125,6 +124,7 @@ const DespesasTab = ({ deputadoID }: { deputadoID: number }) => {
                   <Icon color="white" as={SlArrowRight} />
                 </HStack>
               </Button>
+              <Box h="50px" w="50px"></Box>
             </VStack>
           </Box>
         </VStack>

@@ -32,24 +32,9 @@ const InfoRow = ({ title, dado }: { title: string; dado: string }) => {
 };
 
 const NotaFiscal = ({ dado }: { dado: Dado }) => {
-  function formatDate(data: any): string {
-    let date;
-    if (data instanceof Date) {
-      date = data;
-    } else {
-      date = new Date(data);
-    }
-
-    let day = date.getDate().toString();
-    if (day.length === 1) {
-      day = `0${day}`;
-    }
-    let month = (date.getMonth() + 1).toString();
-    if (month.length === 1) {
-      month = `0${month}`;
-    }
-    let year = date.getFullYear();
-    return `${day}/${month}/${year}`;
+  function formatDate(data: string): string {
+    let dataList = data.split("-");
+    return `${dataList[2]}/${dataList[1]}/${dataList[0]}`;
   }
 
   function formatCPForCNPJ(value: string): string {
@@ -85,13 +70,7 @@ const NotaFiscal = ({ dado }: { dado: Dado }) => {
   }
 
   return (
-    <Box
-      boxShadow="0px 5px 10px gray"
-      w="100%"
-      borderRadius="10px"
-      mt="10px"
-      key={dado.codDocumento}
-    >
+    <Box boxShadow="0px 5px 10px gray" w="100%" borderRadius="10px" mt="10px">
       <VStack align="start" pt="10px">
         <Text
           mb="0"

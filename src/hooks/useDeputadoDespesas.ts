@@ -12,7 +12,7 @@ export interface Dado {
     codDocumento: number;
     tipoDocumento: string;
     codTipoDocumento: number;
-    dataDocumento: Date;
+    dataDocumento: string;
     numDocumento: string;
     valorDocumento: number;
     urlDocumento: string;
@@ -32,6 +32,6 @@ export interface Link {
 }
 
 
-const useDeputadoDespesa = (deputadoID: number, ano: number) => useData<DeputadoDespesaResponse>(`/deputados/${deputadoID}/despesas`, null, [`ano=${ano}`, 'ordenarPor=mes', 'ordem=DESC', 'itens=1000']);
+const useDeputadoDespesa = (deputadoID: number, ano: number) => useData<DeputadoDespesaResponse>(`/deputados/${deputadoID}/despesas`, null, [`ano=${ano}`, 'ordenarPor=mes', 'ordem=desc', 'itens=1000']);
 
 export default useDeputadoDespesa;
